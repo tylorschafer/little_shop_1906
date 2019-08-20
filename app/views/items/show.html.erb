@@ -28,5 +28,6 @@
         <p><%= review.content %></p>
       </section>
       <% end %>
+      <%= link_to 'Add New Review', "/items/#{@item.id}/reviews/new" %>
   </section>
 </footer>
