@@ -31,7 +31,7 @@ describe "Create new review" do
       click_button "Create Review"
 
       new_review = Review.last
-      expect(current_path).to eq("items/#{@chain.id}")
+      expect(current_path).to eq("/items/#{@chain.id}")
       expect(new_review.title).to eq(title)
       expect(new_review.content).to eq(content)
       expect(new_review.rating).to eq(rating)
