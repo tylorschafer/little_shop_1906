@@ -18,7 +18,13 @@ RSpec.describe "as a visitor" do
       @tire = @meg.items.create(name: "Gatorskins", description: "They'll never pop!", price: 100, image: "https://www.rei.com/media/4e1f5b05-27ef-4267-bb9a-14e35935f218?size=784x588", inventory: 12)
       @tire.reviews.create(title: "Santi's review", description: "this product is trash", reating: 1)
 
-    
+      visit "/items/#{@tire.id}"
+
+      expect(page).to have_link("Edit Review")
+
+      click_on "Edit Review"
+
+      expect(current_path)
     end
   end
 end
