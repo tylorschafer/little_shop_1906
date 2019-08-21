@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 describe "Create new review" do
   describe "when i visit the item show page" do
     before :each do
