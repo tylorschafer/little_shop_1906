@@ -14,27 +14,27 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2019-08-21T13:20:22-06:00">2019-08-21T13:20:22-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2019-08-21T14:07:58-06:00">2019-08-21T14:07:58-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">99.62%</span></span>
+    (<span class="covered_percent"><span class="green">99.25%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.21
+         1.23
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>39</b> files in total.
-    <b>527</b> relevant lines. 
-    <span class="green"><b>525</b> lines covered</span> and
-    <span class="red"><b>2</b> lines missed </span>
+    <b>536</b> relevant lines. 
+    <span class="green"><b>532</b> lines covered</span> and
+    <span class="red"><b>4</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -322,12 +322,12 @@
       
       <tr>
         <td class="strong"><a href="#4ae6b5fcdf94a1bce042f1ee27a43ab7d5e569d9" class="src_link" title="spec/features/items/show_spec.rb">spec/features/items/show_spec.rb</a></td>
-        <td class="green strong">100.0 %</td>
-        <td>61</td>
-        <td>28</td>
-        <td>28</td>
-        <td>0</td>
-        <td>1.5</td>
+        <td class="green strong">94.59 %</td>
+        <td>66</td>
+        <td>37</td>
+        <td>35</td>
+        <td>2</td>
+        <td>1.8</td>
       </tr>
       
       <tr>
@@ -579,8 +579,8 @@
           <code class="ruby">  def show</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="13">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="11" data-linenumber="13">
+          <span class="hits">11</span>
           
           <code class="ruby">    @item = Item.find(params[:id])</code>
         </li>
@@ -4356,11 +4356,11 @@
         <div class="source_table" id="4ae6b5fcdf94a1bce042f1ee27a43ab7d5e569d9">
   <div class="header">
     <h3>spec/features/items/show_spec.rb</h3>
-    <h4><span class="green">100.0 %</span> covered</h4>
+    <h4><span class="green">94.59 %</span> covered</h4>
     <div>
-      <b>28</b> relevant lines. 
-      <span class="green"><b>28</b> lines covered</span> and
-      <span class="red"><b>0</b> lines missed.</span>
+      <b>37</b> relevant lines. 
+      <span class="green"><b>35</b> lines covered</span> and
+      <span class="red"><b>2</b> lines missed.</span>
     </div>
   </div>
   
@@ -4391,8 +4391,8 @@
           <code class="ruby">  before :each do</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="5">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="4" data-linenumber="5">
+          <span class="hits">4</span>
           
           <code class="ruby">    @bike_shop = Merchant.create(</code>
         </li>
@@ -4433,8 +4433,8 @@
           <code class="ruby">    )</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="12">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="4" data-linenumber="12">
+          <span class="hits">4</span>
           
           <code class="ruby">    @chain = @bike_shop.items.create(</code>
         </li>
@@ -4469,226 +4469,226 @@
           <code class="ruby">    )</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="18">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="4" data-linenumber="18">
+          <span class="hits">4</span>
           
-          <code class="ruby">    @review_1 = @chain.reviews.create(</code>
+          <code class="ruby">    @review_1 = @chain.reviews.create(title: &quot;Gets the job done&quot;, content: &quot;My pooch loves this product, has lasted for weeks already!&quot;, rating: 5.0)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="19">
+        <li class="covered" data-hits="4" data-linenumber="19">
+          <span class="hits">4</span>
           
-          
-          <code class="ruby">      title: &#39;Tylor Review&#39;,</code>
+          <code class="ruby">    @review_2 = @chain.reviews.create(title: &quot;Good Buy!&quot;, content: &quot;This is a great toy, very durable and good quality&quot;, rating: 4.0)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="20">
+        <li class="covered" data-hits="4" data-linenumber="20">
+          <span class="hits">4</span>
           
-          
-          <code class="ruby">      content: &#39;This was a great item&#39;,</code>
+          <code class="ruby">    @review_3 = @chain.reviews.create(title: &quot;Could be better&quot;, content: &quot;Meh meh meh meh&quot;, rating: 3.0)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="21">
+        <li class="covered" data-hits="4" data-linenumber="21">
+          <span class="hits">4</span>
           
-          
-          <code class="ruby">      rating: 4.3</code>
+          <code class="ruby">    @review_4 = @chain.reviews.create(title: &quot;It&#39;s ok&quot;, content: &quot;It&#39;s fine for the price&quot;, rating: 2.0)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="22">
+        <li class="covered" data-hits="4" data-linenumber="22">
+          <span class="hits">4</span>
           
-          
-          <code class="ruby">    )</code>
+          <code class="ruby">    @reviews = [@review_1,@review_2,@review_3,@review_4]</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="23">
-          <span class="hits">3</span>
-          
-          <code class="ruby">    @review_2 = @chain.reviews.create(</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="24">
-          
-          
-          <code class="ruby">      title: &#39;Santiago Review&#39;,</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="25">
-          
-          
-          <code class="ruby">      content: &#39;What a poor piece of equipment&#39;,</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="26">
-          
-          
-          <code class="ruby">      rating: 1.3</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="27">
-          
-          
-          <code class="ruby">    )</code>
-        </li>
-      
-        <li class="covered" data-hits="3" data-linenumber="28">
-          <span class="hits">3</span>
-          
-          <code class="ruby">    @reviews = [@review_1,@review_2]</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="29">
+        <li class="never" data-hits="" data-linenumber="23">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="30">
+        <li class="covered" data-hits="1" data-linenumber="24">
           <span class="hits">1</span>
           
           <code class="ruby">  it &#39;shows item info&#39; do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="31">
+        <li class="never" data-hits="" data-linenumber="25">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="32">
+        <li class="covered" data-hits="1" data-linenumber="26">
           <span class="hits">1</span>
           
           <code class="ruby">    visit &quot;items/#{@chain.id}&quot;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="33">
+        <li class="never" data-hits="" data-linenumber="27">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="34">
+        <li class="covered" data-hits="1" data-linenumber="28">
           <span class="hits">1</span>
           
           <code class="ruby">    expect(page).to have_link(@chain.merchant.name)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="35">
+        <li class="covered" data-hits="1" data-linenumber="29">
           <span class="hits">1</span>
           
           <code class="ruby">    expect(page).to have_content(@chain.name)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="36">
+        <li class="covered" data-hits="1" data-linenumber="30">
           <span class="hits">1</span>
           
           <code class="ruby">    expect(page).to have_content(@chain.description)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="37">
+        <li class="covered" data-hits="1" data-linenumber="31">
           <span class="hits">1</span>
           
           <code class="ruby">    expect(page).to have_content(&quot;Price: $#{@chain.price}&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="38">
+        <li class="covered" data-hits="1" data-linenumber="32">
           <span class="hits">1</span>
           
           <code class="ruby">    expect(page).to have_content(&quot;Active&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="39">
+        <li class="covered" data-hits="1" data-linenumber="33">
           <span class="hits">1</span>
           
           <code class="ruby">    expect(page).to have_content(&quot;Inventory: #{@chain.inventory}&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="40">
+        <li class="covered" data-hits="1" data-linenumber="34">
           <span class="hits">1</span>
           
           <code class="ruby">    expect(page).to have_content(&quot;Sold by: #{@bike_shop.name}&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="41">
+        <li class="covered" data-hits="1" data-linenumber="35">
           <span class="hits">1</span>
           
           <code class="ruby">    expect(page).to have_css(&quot;img[src*=&#39;#{@chain.image}&#39;]&quot;)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="42">
+        <li class="never" data-hits="" data-linenumber="36">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="43">
+        <li class="never" data-hits="" data-linenumber="37">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="44">
+        <li class="covered" data-hits="1" data-linenumber="38">
           <span class="hits">1</span>
           
           <code class="ruby">  it &#39;shows reviews for that item&#39; do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="45">
+        <li class="never" data-hits="" data-linenumber="39">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="46">
+        <li class="covered" data-hits="1" data-linenumber="40">
           <span class="hits">1</span>
           
           <code class="ruby">    visit &quot;items/#{@chain.id}&quot;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="47">
+        <li class="never" data-hits="" data-linenumber="41">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="48">
+        <li class="covered" data-hits="1" data-linenumber="42">
           <span class="hits">1</span>
           
           <code class="ruby">    @reviews.each do |review|</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="49">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="4" data-linenumber="43">
+          <span class="hits">4</span>
           
           <code class="ruby">      within &quot;#review-#{review.id}&quot; do</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="50">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="4" data-linenumber="44">
+          <span class="hits">4</span>
           
           <code class="ruby">        expect(page).to have_content(review.title)</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="51">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="4" data-linenumber="45">
+          <span class="hits">4</span>
           
           <code class="ruby">        expect(page).to have_content(review.content)</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="52">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="4" data-linenumber="46">
+          <span class="hits">4</span>
           
           <code class="ruby">        expect(page).to have_content(&quot;Rating: #{review.rating}&quot;)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="53">
+        <li class="never" data-hits="" data-linenumber="47">
           
           
           <code class="ruby">      end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="54">
+        <li class="never" data-hits="" data-linenumber="48">
           
           
           <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="49">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="50">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="51">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  it &#39;shows a link to create a new review&#39; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="52">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    visit &quot;items/#{@chain.id}&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="53">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="54">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    expect(page).to have_link(&#39;Add New Review&#39;)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="55">
@@ -4706,28 +4706,58 @@
         <li class="covered" data-hits="1" data-linenumber="57">
           <span class="hits">1</span>
           
-          <code class="ruby">  it &#39;shows a link to create a new review&#39; do</code>
+          <code class="ruby">  it &#39;I can see statistics about all reviews&#39; do</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="58">
           <span class="hits">1</span>
           
-          <code class="ruby">    visit &quot;items/#{@chain.id}&quot;</code>
+          <code class="ruby">    top_reviews = &quot;#{@review_1.title} : #{@review_1.rating}, #{@review_2.title} : #{@review_2.rating}, #{@review_3.title} : #{@review_3.rating}&quot;</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="59">
           <span class="hits">1</span>
           
-          <code class="ruby">    expect(page).to have_link(&#39;Add New Review&#39;)</code>
+          <code class="ruby">    bottom_reviews = &quot;#{@review_4.title} : #{@review_4.rating}, #{@review_3.title} : #{@review_3.rating}, #{@review_2.title} : #{@review_2.rating}&quot;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="60">
+        <li class="covered" data-hits="1" data-linenumber="60">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    visit &quot;items/#{@chain.id}&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="61">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="62">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    expect(page).to have_content(&quot;Top Reviews: #{top_reviews}&quot;)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="63">
+          
+          
+          <code class="ruby">    expect(page).to have_content(&quot;Lowest Reviews: #{bottom_reviews}&quot;)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="64">
+          
+          
+          <code class="ruby">    expect(page).to have_content(&quot;Average Review Rating: 3.5&quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="65">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="61">
+        <li class="never" data-hits="" data-linenumber="66">
           
           
           <code class="ruby">end</code>

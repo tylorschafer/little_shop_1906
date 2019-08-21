@@ -55,16 +55,12 @@ RSpec.describe 'item show page', type: :feature do
   end
 
   it 'I can see statistics about all reviews' do
+    top_reviews = "#{@review_1.title} : #{@review_1.rating}, #{@review_2.title} : #{@review_2.rating}, #{@review_3.title} : #{@review_3.rating}"
+    bottom_reviews = "#{@review_4.title} : #{@review_4.rating}, #{@review_3.title} : #{@review_3.rating}, #{@review_2.title} : #{@review_2.rating}"
     visit "items/#{@chain.id}"
 
-    expect(page).to have_content(
-      "Top Reviews: #{@review_1.title @review_1.rating}#{@review_2.title @review_2.rating}#{@review_3.title @review_3.rating}"
-    )
-    expect(page).to have_content(
-      "Lowest Reviews: #{@review_4.title @review_4.rating}#{@review_3.title @review_3.rating}#{@review_2.title @review_2.rating}"
-    )
-    expect(page).to have_content(
-      "Average Review Rating: 3.5"
-    )
+    expect(page).to have_content("Top Reviews: #{top_reviews}")
+    expect(page).to have_content("Lowest Reviews: #{bottom_reviews}")
+    expect(page).to have_content("Average Review Rating: 3.5")
   end
 end
