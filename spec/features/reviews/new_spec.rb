@@ -52,8 +52,7 @@ describe "Create new review" do
       click_button "Create Review"
 
       expect(current_path).to eq("/items/#{@chain.id}/reviews/new")
-      expect(page).to have_content('We were unable to create your review
-        as you did not fill the entire form.')
+      expect(page).to have_content('We were unable to create your review as you did not fill the entire form.')
     end
   end
 end
