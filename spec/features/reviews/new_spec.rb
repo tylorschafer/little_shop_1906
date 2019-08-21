@@ -14,12 +14,11 @@ describe "Create new review" do
         image: "https://www.rei.com/media/b61d1379-ec0e-4760-9247-57ef971af0ad?size=784x588",
         inventory: 5
       )
+      @title = "review"
+      @content = "this product is great"
+      @rating = 4
     end
-    it "i can create a new review by filling out a form" do
-
-      title = "review"
-      content = "this product is great"
-      rating = 4
+    it "I can create a new review by filling out a form" do
 
       visit "items/#{@chain.id}"
 
@@ -27,17 +26,34 @@ describe "Create new review" do
 
       expect(current_path).to eq("/items/#{@chain.id}/reviews/new")
 
-      fill_in :title, with: title
-      fill_in :content, with: content
-      fill_in :rating, with: rating
+      fill_in :title, with: @title
+      fill_in :content, with: @content
+      fill_in :rating, with: @rating
 
       click_button "Create Review"
 
       new_review = Review.last
       expect(current_path).to eq("/items/#{@chain.id}")
-      expect(new_review.title).to eq(title)
-      expect(new_review.content).to eq(content)
-      expect(new_review.rating).to eq(rating)
+      expect(page).to have_content('Thank you for your review submission.')
+      expect(new_review.title).to eq(@title)
+      expect(new_review.content).to eq(@content)
+      expect(new_review.rating).to eq(@rating)
+    end
+
+    it 'I will be redirected back to review new
+    and a flash warning will display if I do not fill out form completley.' do
+      visit "items/#{@chain.id}"
+
+      click_link "Add New Review"
+
+      fill_in :title, with: @title
+      fill_in :content, with: @content
+
+      click_button "Create Review"
+
+      expect(current_path).to eq("/items/#{@chain.id}/reviews/new")
+      expect(page).to have_content('We were unable to create your review
+        as you did not fill the entire form.')
     end
   end
 end
