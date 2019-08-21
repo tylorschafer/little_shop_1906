@@ -51,16 +51,27 @@ RSpec.describe 'item show page', type: :feature do
   it 'shows a link to create a new review' do
     visit "items/#{@chain.id}"
 
-    expect(page).to have_link('Add New Review')
+    within "#new-review" do
+      expect(page).to have_link('Add New Review')
+    end
   end
 
   it 'I can see statistics about all reviews' do
-    top_reviews = "#{@review_1.title} : #{@review_1.rating}, #{@review_2.title} : #{@review_2.rating}, #{@review_3.title} : #{@review_3.rating}"
-    bottom_reviews = "#{@review_4.title} : #{@review_4.rating}, #{@review_3.title} : #{@review_3.rating}, #{@review_2.title} : #{@review_2.rating}"
+    top_reviews = "#{@review_1.title} : #{@review_1.rating}\n#{@review_2.title} : #{@review_2.rating}\n#{@review_3.title} : #{@review_3.rating}"
+    bottom_reviews = "#{@review_4.title} : #{@review_4.rating}\n#{@review_3.title} : #{@review_3.rating}\n#{@review_2.title} : #{@review_2.rating}"
+
     visit "items/#{@chain.id}"
 
-    expect(page).to have_content("Top Reviews: #{top_reviews}")
-    expect(page).to have_content("Lowest Reviews: #{bottom_reviews}")
-    expect(page).to have_content("Average Review Rating: 3.5")
+    within "#top-reviews" do
+      expect(page).to have_content("Top Reviews:\n#{top_reviews}")
+    end
+
+    within "#low-reviews" do
+      expect(page).to have_content("Lowest Reviews:\n#{bottom_reviews}")
+    end
+
+    within "#average-reviews" do
+      expect(page).to have_content("Average Review Rating: 3.5")
+    end
   end
 end
