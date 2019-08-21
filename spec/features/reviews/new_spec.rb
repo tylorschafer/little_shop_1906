@@ -42,7 +42,7 @@ describe "Create new review" do
       content = "theis product is great"
       rating = 4
 
-      visit "items/#{@cahin.id}"
+      visit "items/#{@chain.id}"
       click_link "Add New Review"
       expect(current_path).to eq("/items/#{@chain.id}/reviews/new")
       fill_in :title, with: title
@@ -51,5 +51,6 @@ describe "Create new review" do
       click_button "Create Review"
 
       expect(page).to have_content("missing review content")
+    end
   end
 end
