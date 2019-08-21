@@ -24,7 +24,9 @@ RSpec.describe "as a visitor" do
 
       click_on "Edit Review"
 
-      expect(current_path)
+      expect(current_path).to eq("/items/#{@tire.id}/review_edit")
+      expect(page).to have_link("Santi's review")
+      
     end
   end
 end
