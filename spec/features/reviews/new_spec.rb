@@ -37,5 +37,11 @@ describe "Create new review" do
       expect(new_review.rating).to eq(rating)
 
     end
+    it "if i don fill in the 3 main parts of the reviews" do
+      title = "review form user 1"
+      content = "theis product is great"
+      rating = 4
+
+      
   end
 end
