@@ -15,4 +15,7 @@ describe "Saving new review correctly" do
         inventory: 5
       )
     end
-    
+    it "if i don fill in the 3 main parts of the reviews" do
+      title = "review"
+      content = "theis product is great"
+      rating = 4
