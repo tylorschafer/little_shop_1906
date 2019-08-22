@@ -15,6 +15,7 @@
       <p>Inventory: <%= item.inventory %> </p>
       <% if item.active? %>
         <p>Active</p>
+        <%= button_to "Add to Cart", "/cart/#{item.id}", method: :patch %>
       <% else %>
         <p>Inactive</p>
       <% end %>
