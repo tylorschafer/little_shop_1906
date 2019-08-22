@@ -11,7 +11,7 @@ class ItemsController<ApplicationController
 
   def show
     if Item.where(id: params[:id]).empty?
-      flash[:error] = "Item does not exist"
+      flash[:error] = "Sorry, that item does not exist"
       redirect_to '/items'
     else
       @item = Item.find(params[:id])
@@ -39,9 +39,9 @@ class ItemsController<ApplicationController
   end
 
   def destroy
-    item = Item.find(params[:id]).reviews.destroy_all
-    item.destroy
-    redirect_to "/items"
+    Review.delete(Review.where(id: params[:id]))
+    Item.destroy(params[:id])
+    redirect_to '/items'
   end
 
   private
