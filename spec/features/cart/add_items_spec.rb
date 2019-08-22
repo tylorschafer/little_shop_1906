@@ -10,13 +10,13 @@ describe 'When a user adds items to their cart' do
   it 'displays a message' do
     visit '/items'
 
-    within("#item-#{@tire.id}") do
+    within("#item-#{@item_1.id}") do
       click_button "Add to Cart"
     end
 
     expect(page).to have_content("You now have 1 #{@item_1.name} in your cart")
 
-    within("#item-#{@item_2}") do
+    within("#item-#{@item_2.id}") do
       click_button "Add to Cart"
     end
 
@@ -24,7 +24,7 @@ describe 'When a user adds items to their cart' do
 
     visit "/merchants/#{@merchant.id}/items"
 
-    within("#item-#{@tire.id}") do
+    within("#item-#{@item_1.id}") do
       click_button "Add to Cart"
     end
 
