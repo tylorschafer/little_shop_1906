@@ -39,7 +39,6 @@ class ItemsController<ApplicationController
   end
 
   def destroy
-    Review.delete(Review.where(id: params[:id]))
     Item.destroy(params[:id])
     redirect_to '/items'
   end
