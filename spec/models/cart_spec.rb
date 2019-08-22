@@ -13,7 +13,7 @@ describe Cart do
     end
     describe "#add_item" do
       it "adds an item to cart contents" do
-        @cart.add_item(1)
+        @cart.add_item(1) 
         @cart.add_item(2)
 
         expect(@cart.contents).to eq({'1' => 20, '2' => 19})
