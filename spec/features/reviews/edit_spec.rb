@@ -35,3 +35,9 @@ RSpec.describe "as a visitor" do
       visit "/items/#{@tire.id}"
       click_on "Update review"
       fild_in 'title', with: "Jhon's review"
+      fild_in 'description', with: "this product id alright"
+      fild_in 'rating', with: 3
+
+
+  end
+end
