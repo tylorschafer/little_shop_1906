@@ -16,7 +16,7 @@ RSpec.describe "as a visitor" do
     before :each do
       @meg = Merchant.create(name: "Meg's Bike Shop", address: '123 Bike Rd.', city: 'Denver', state: 'CO', zip: 80203)
       @tire = @meg.items.create(name: "Gatorskins", description: "They'll never pop!", price: 100, image: "https://www.rei.com/media/4e1f5b05-27ef-4267-bb9a-14e35935f218?size=784x588", inventory: 12)
-      @tire.reviews.create(title: "Santi's review", description: "this product is trash", reating: 1)
+      @tire.reviews.create(title: "Santi's review", content: "this product is trash", reating: 1)
       visit "/items/#{@tire.id}"
 
       expect(page).to have_link("Edit Review")
@@ -26,7 +26,7 @@ RSpec.describe "as a visitor" do
       expect(current_path).to eq("/items/#{@tire.id}/review_edit")
       expect(page).to have_link("Santi's review")
       expect(find_field('title').value).to eq "Santi's review"
-      expect(find_field('description').value).to eq "this product is trash"
+      expect(find_field('content').value).to eq "this product is trash"
       expect(find_field('rating').value).to eq 1
 
 
@@ -34,7 +34,7 @@ RSpec.describe "as a visitor" do
       visit "/items/#{@tire.id}"
       click_on "Update review"
       fild_in 'title', with: "Jhon's review"
-      fild_in 'description', with: "this product id alright"
+      fild_in 'content', with: "this product id alright"
       fild_in 'rating', with: 3
 
       click_button "Update review"
