@@ -42,7 +42,7 @@ RSpec.describe "as a visitor" do
 
       expect(current_path).to eq("/items/#{@tire.id}")
       expect(page).to have_content("Jhon's review")
-
-
+      expect(page).to have_content("this product id alright")
+      expect(page).to have_content(3)
   end
 end
