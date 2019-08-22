@@ -38,6 +38,11 @@ RSpec.describe "as a visitor" do
       fild_in 'description', with: "this product id alright"
       fild_in 'rating', with: 3
 
+      click_button "Update review"
+
+      expect(current_path).to eq("/items/#{@tire.id}")
+      expect(page).to have_content("Jhon's review")
+
 
   end
 end
