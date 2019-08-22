@@ -28,4 +28,9 @@ RSpec.describe "as a visitor" do
       expect(page).to have_link("Santi's review")
       expect(find_field('title').value).to eq "Santi's review"
       expect(find_field('description').value).to eq "this product is trash"
+      expect(find_field('rating').value).to eq 1
+
+    end
+    it 'can edit review ifo by filling the form and clicking submit' do
+      visit "/items/#{@tire.id}"
       
