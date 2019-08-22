@@ -10,8 +10,9 @@ describe "Create new review" do
         state: 'CO',
         zip: 80203
       )
-      @chain = @bike_shop.items.create!(
-        name: "Chain", description: "It'll never break!",
+      @chain = @bike_shop.items.create(
+        name: "Chain",
+        description: "It'll never break!",
         price: 50,
         image: "https://www.rei.com/media/b61d1379-ec0e-4760-9247-57ef971af0ad?size=784x588",
         inventory: 5
@@ -54,6 +55,7 @@ describe "Create new review" do
       click_button "Create Review"
 
       expect(current_path).to eq("/items/#{@chain.id}/reviews/new")
+      
       within ".error" do
         expect(page).to have_content("Rating Number must be between 1 and 5")
       end
