@@ -1,0 +1,15 @@
+<h1>Edit <%=link_to @item.name, "/items/#{@tire.id}" %></h1>
+<center>
+  <%= form_tag "/items/#{@item.id}", method: :patch do %>
+    <%= label_tag :title %>
+    <%= text_field_tag :title, "#{@item.title}"%>
+
+    <%= label_tag :content %>
+    <%= text_field_tag :content, "#{@item.content}" %>
+
+    <%= label_tag :rating %>
+    <%= text_field_tag :rating, "#{@item.rating}" %>
+
+    <%= submit_tag 'Update Review' %>
+  <% end %>
+</center>
