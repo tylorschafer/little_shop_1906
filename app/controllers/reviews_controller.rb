@@ -11,4 +11,7 @@ class ReviewsController < ApplicationController
   def review_params
     params.permit(:title, :content, :rating)
   end
+  def edit
+    @item = Item.find(params[:id])
+  end
 end
