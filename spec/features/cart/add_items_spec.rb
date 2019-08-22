@@ -8,26 +8,44 @@ describe 'When a user adds items to their cart' do
   end
 
   it 'displays a message' do
+
     visit '/items'
 
     within("#item-#{@item_1.id}") do
       click_button "Add to Cart"
     end
 
-    expect(page).to have_content("You now have 1 #{@item_1.name} in your cart")
+    expect(page).to have_content("You now have 1 #{@item_1.name} in your cart.")
+
+    visit "/merchants/#{@merchant.id}/items"
 
     within("#item-#{@item_2.id}") do
       click_button "Add to Cart"
     end
 
-    expect(page).to have_content("You now have 1 #{@item_2.name} in your cart")
+    expect(page).to have_content("You now have 1 #{@item_2.name} in your cart.")
 
-    visit "/merchants/#{@merchant.id}/items"
+  end
+
+  it "the message correctly increments for multiple items in cart" do
+
+    visit "/items"
+
+    within("#item-#{@item_1.id}") do
+      click_button "Add to Cart"
+    end
+    expect(page).to have_content("You now have 1 #{@item_1.name} in your cart.")
+
+    within("#item-#{@item_2.id}") do
+      click_button "Add to Cart"
+    end
+
+    expect(page).to have_content("You now have 1 #{@item_2.name} in your cart.")
 
     within("#item-#{@item_1.id}") do
       click_button "Add to Cart"
     end
 
-    expect(page).to have_content("You now have 1 #{@item_1.name} in your cart")
+    expect(page).to have_content("You now have 2 #{@item_1.name} in your cart.")
   end
 end
