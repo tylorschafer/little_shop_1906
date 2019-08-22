@@ -76,6 +76,9 @@ RSpec.describe 'item show page', type: :feature do
       end
 
     it 'I can add items with the Add to Cart Button' do
+
+      visit "/items/#{@chain.id}"
+
       within  ".item-show-grid" do
         click_button 'Add to Cart'
       end
