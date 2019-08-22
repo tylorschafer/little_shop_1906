@@ -33,4 +33,5 @@ RSpec.describe "as a visitor" do
     end
     it 'can edit review ifo by filling the form and clicking submit' do
       visit "/items/#{@tire.id}"
-      
+      click_on "Update review"
+      fild_in 'title', with: "Jhon's review"
