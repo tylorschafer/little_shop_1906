@@ -48,4 +48,29 @@ describe 'When a user adds items to their cart' do
 
     expect(page).to have_content("You now have 2 #{@item_1.name} in your cart.")
   end
+
+  it 'displays the total number of items in the cart' do
+
+    visit 'items'
+
+    expect(page).to have_content("Cart: 0")
+
+    within("#-item#{@item_1.id}") do
+      click_button "Add to Cart"
+    end
+
+    expect(page).to have_content("Cart: 1")
+
+    within("#-item#{@item_2.id}") do
+      click_button "Add to Cart"
+    end
+
+    expect(page).to have_content("Cart: 2")
+
+    within("#-item#{@item_1.id}") do
+      click_button "Add to Cart"
+    end
+
+    expect(page).to have_content("Cart: 3")
+  end
 end
