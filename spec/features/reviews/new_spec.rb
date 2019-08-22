@@ -55,7 +55,10 @@ describe "Create new review" do
       click_button "Create Review"
 
       expect(current_path).to eq("/items/#{@chain.id}/reviews/new")
-      expect(page).to have_content("Rating can't be blank")
+      
+      within ".error" do
+        expect(page).to have_content("Rating Number must be between 1 and 5")
+      end
     end
   end
 end
