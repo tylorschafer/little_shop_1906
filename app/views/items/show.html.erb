@@ -11,6 +11,7 @@
       <p>Inventory: <%= @item.inventory %> </p>
       <% if @item.active? %>
         <p style= "color:green">Active</p>
+        <%= button_to 'Add to Cart', "/cart/#{@item.id}", method: :patch %>
       <% else %>
         <p style= "color:red">Inactive</p>
       <% end %>
