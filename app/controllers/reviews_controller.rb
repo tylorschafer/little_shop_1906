@@ -7,11 +7,11 @@ class ReviewsController < ApplicationController
     item = Item.find(params[:id])
     review = item.reviews.create(review_params)
     if Review.last != review
-      redirect_to "/items/#{item.id}/reviews/new"
       flash[:notice] = 'We were unable to create your review as you did not fill the entire form.'
+      redirect_to "/items/#{item.id}/reviews/new"
     else
-      redirect_to "/items/#{item.id}"
       flash[:notice] = 'Thank you for your review submission.'
+      redirect_to "/items/#{item.id}"
     end
   end
 

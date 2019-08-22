@@ -2,12 +2,11 @@
 <center>
   <%= form_tag "/items/#{@item.id}", method: :post do %>
     <%= label_tag "Title" %>
-    <%= text_field_tag :title%>
+    <%= text_field_tag :title, nil, placeholder: "Title"%>
     <%= label_tag "Content" %>
-    <%= text_field_tag :content%>
+    <%= text_field_tag :content, nil, placeholder: "Content"%>
     <%= label_tag "Rating" %>
-    <%= number_field_tag :rating%>
+    <%= number_field_tag :rating, nil, placeholder: "Rating"%>
     <%= submit_tag 'Create Review' %>
   <% end %>
-
 </center>
