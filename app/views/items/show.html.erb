@@ -11,6 +11,7 @@
       <p>Inventory: <%= @item.inventory %> </p>
       <% if @item.active? %>
         <p style= "color:green">Active</p>
+        <%= button_to 'Add to Cart', "/cart/#{@item.id}", method: :patch %>
       <% else %>
         <p style= "color:red">Inactive</p>
       <% end %>
@@ -20,7 +21,29 @@
   </section>
 </center>
 <footer>
-  <section class= "review-grid">
+  <section id= "review-grid">
+    <section id= "top-reviews">
+      <h1>Top Reviews: </h1>
+      <% Review.top_rated.each do |review| %>
+        <section id="top-review<%=review.id%>">
+          <p><%=review.title%> : <%=review.rating%></p>
+          </section>
+          <% end %>
+        </section>
+        <section id = "low-reviews">
+          <h1>Lowest Reviews: </h1>
+          <% Review.bottom_rated.each do |review| %>
+          <section id="low-review<%=review.id%>">
+            <p><%=review.title%> : <%=review.rating%></p>
+        </section>
+        <% end %>
+      </section>
+      <section id="average-reviews">
+        <h1>Average Review Rating: <%= Review.average_rating %></h1>
+      </section>
+      <section id="new-review">
+      <%= link_to 'Add New Review', "/items/#{@item.id}/reviews/new" %>
+    </section>
     <% @item.reviews.each do |review| %>
       <section id= "review-<%=review.id%>">
         <h2><%= review.title %></h2>
@@ -28,6 +51,5 @@
         <p><%= review.content %></p>
       </section>
       <% end %>
-      <%= link_to 'Add New Review', "/items/#{@item.id}/reviews/new" %>
   </section>
 </footer>
