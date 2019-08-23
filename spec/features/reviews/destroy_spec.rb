@@ -7,3 +7,8 @@ RSpec.describe "As a visitor" do
       item_review = Review.create(title: "Santi's", :content: "this product is greate", rating: 4)
 
       visit "items/#{item_review.id}"
+      click_on "Delete Review"
+
+      expect(current_path).to eq('/items/item_id')
+      expect(page).to_not have_css("#item-#{item_review.id}")
+    end
