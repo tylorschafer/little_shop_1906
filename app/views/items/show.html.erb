@@ -20,36 +20,37 @@
     </section>
   </section>
 </center>
-<footer>
-  <section id= "review-grid">
-    <section id= "top-reviews">
-      <h1>Top Reviews: </h1>
-      <% Review.top_rated.each do |review| %>
-        <section id="top-review<%=review.id%>">
-          <p><%=review.title%> : <%=review.rating%></p>
-          </section>
-          <% end %>
-        </section>
-        <section id = "low-reviews">
-          <h1>Lowest Reviews: </h1>
-          <% Review.bottom_rated.each do |review| %>
-          <section id="low-review<%=review.id%>">
-            <p><%=review.title%> : <%=review.rating%></p>
+<footer id = "review-grid">
+  <section id="average-reviews">
+    <h2>Average Review Rating: <%= Review.average_rating %></h2>
+    <%= link_to 'Add New Review', "/items/#{@item.id}/reviews/new" %>
+  </section>
+  <section id= "top-reviews">
+    <h2>Top Reviews: </h2>
+    <% Review.top_rated.each do |review| %>
+      <section id="top-review<%=review.id%>">
+        <p><%=review.title%> : <%=review.rating%></p>
         </section>
         <% end %>
       </section>
-      <section id="average-reviews">
-        <h1>Average Review Rating: <%= Review.average_rating %></h1>
-      </section>
-      <section id="new-review">
-      <%= link_to 'Add New Review', "/items/#{@item.id}/reviews/new" %>
-    </section>
-    <% @item.reviews.each do |review| %>
-      <section id= "review-<%=review.id%>">
-        <h2><%= review.title %></h2>
-        <h3>Rating: <%= review.rating %></h3>
-        <p><%= review.content %></p>
+      <section id = "low-reviews">
+        <h2>Lowest Reviews: </h2>
+        <% Review.bottom_rated.each do |review| %>
+        <section id="low-review<%=review.id%>">
+          <p><%=review.title%> : <%=review.rating%></p>
       </section>
       <% end %>
+    </section>
+    <section id="span-3">
+    <h2>All Reviews: </h2>
   </section>
+    <section id= "all-reviews">
+      <% @item.reviews.each do |review| %>
+        <section id= "review-<%=review.id%>">
+          <h2><%= review.title %></h2>
+          <h3>Rating: <%= review.rating %></h3>
+          <p><%= review.content %></p>
+        </section>
+    </section>
+      <% end %>
 </footer>

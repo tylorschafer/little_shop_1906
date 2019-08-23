@@ -7,16 +7,18 @@
     <img src= <%= item.image %>>
     <p>Sold by: <%= item.merchant.name %></p>
     <p>Price: $<%= item.price %></p>
+    <span><%= button_to 'Subtract', "/cart/#{item.id}/remove", method: :patch %>
     <p>Quantity: <%= cart.count_of(item.id) %></p>
-    <span><%= button_to 'Subtract', "/cart/#{item.id}/remove", method: :patch %></span>
-    <span><%= button_to 'Add', "/cart/#{item.id}/add", method: :patch %></span>
+    <%= button_to 'Add', "/cart/#{item.id}/add", method: :patch %></span>
     <p>Subtotal: $<%= cart.sub_total(item) %></p>
     <%= link_to 'Remove Item', "/cart/#{item.id}", method: :delete %>
   </section>
   <% end %>
-  <% if cart.contents == {} %>
-  <% else %>
-    <%= link_to 'Empty Cart', '/cart/', method: :delete %>
-  <% end %>
-  <h2>Grand Total: $<%= cart.grand_total %></h2>
+</section>
+<section id="cart-footer">
+<% if cart.contents == {} %>
+<% else %>
+  <%= link_to 'Empty Cart', '/cart/', method: :delete %>
+<% end %>
+<h2>Grand Total: $<%= cart.grand_total %></h2>
 </section>
