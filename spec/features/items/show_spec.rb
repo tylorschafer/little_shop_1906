@@ -51,9 +51,7 @@ RSpec.describe 'item show page', type: :feature do
   it 'shows a link to create a new review' do
     visit "items/#{@chain.id}"
 
-    within "#new-review" do
-      expect(page).to have_link('Add New Review')
-    end
+    expect(page).to have_link('Add New Review')
   end
 
   it 'I can see statistics about all reviews' do

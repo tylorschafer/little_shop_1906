@@ -130,7 +130,8 @@ describe 'cart show page' do
       click_button 'Subtract'
       expect(page).to have_content("Quantity: 1")
       click_button 'Subtract'
-      expect(page).to have_content("Quantity: 0")
       end
+      expect(page).to_not have_css("#item-#{@item_1.id}")
+      expect(page).to_not have_content(@item_1.name)
   end
 end

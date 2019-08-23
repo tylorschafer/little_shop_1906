@@ -14,8 +14,12 @@ class CartController < ApplicationController
   end
 
   def remove
-    session[:cart][params[:item_id]] -= 1
-    redirect_to '/cart'
+    if session[:cart][params[:item_id]] < 2
+      delete
+    else
+      session[:cart][params[:item_id]] -= 1
+      redirect_to '/cart'
+    end
   end
 
   def add
