@@ -9,11 +9,11 @@ describe 'cart show page' do
   end
   it 'I see all my items I added to the cart' do
 
-    visit "/items/#{@item_1}"
+    visit "/items/#{@item_1.id}"
 
     click_button 'Add to Cart'
 
-    visit "/items/#{@item_2}"
+    visit "/items/#{@item_2.id}"
 
     click_button 'Add to Cart'
 
@@ -32,15 +32,15 @@ describe 'cart show page' do
 
   it "I can see a subtotal of items with multiple quantities" do
 
-    visit "/items/#{@item_1}"
+    2.times do
+      visit "/items/#{@item_1.id}"
 
-    click_button 'Add to Cart'
-
-    click_button 'Add to Cart'
+      click_button 'Add to Cart'
+    end
 
     visit '/cart'
 
-    within "#item-#{item.id}" do
+    within "#item-#{@item_1.id}" do
       expect(page).to have_content("Quantity: 2")
       expect(page).to have_content("Subtotal: $200")
     end
@@ -48,15 +48,17 @@ describe 'cart show page' do
   end
 
   it "I can see a grand total the cost of everything in my cart" do
-    visit "/items/#{@item_1}"
+    2.times do
+      visit "/items/#{@item_1.id}"
 
-    click_button 'Add to Cart'
-    click_button 'Add to Cart'
+      click_button 'Add to Cart'
+    end
 
-    visit "/items/#{@item_2}"
+    2.times do
+      visit "/items/#{@item_2.id}"
 
-    click_button 'Add to Cart'
-    click_button 'Add to Cart'
+      click_button 'Add to Cart'
+    end
 
     visit '/cart'
 
