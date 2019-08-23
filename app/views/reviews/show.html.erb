@@ -1,0 +1,6 @@
+<h1><%= @item.title %></h1>
+<p class="content"><%= @item.content %></p>
+<p class="rating"><%= @items.rating %></p>
+
+<ul><%= link_to "Update review", "/merchants/#{@merchant.id}/edit" %></ul>
+<ul><%= link_to "Delete review", "/merchants/#{@merchant.id}", method: :delete %></ul>
