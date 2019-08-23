@@ -64,4 +64,25 @@ describe 'cart show page' do
 
     expect(page).to have_content("Grand Total: $360")
   end
+
+  it "I can see a link to empty my cart if the cart is not empty" do
+
+    visit "/items/#{@item_2.id}"
+
+    click_button 'Add to Cart'
+
+    visit '/cart'
+
+    expect(page).to have_link('Empty Cart')
+
+    click_link 'Empty Cart'
+
+    expect(current_path).to eq('/cart')
+    expect(page).to_not have_link('Empty Cart')
+    expect(page).to_not have_content(item.name)
+    expect(page).to_not have_css("img[src*='#{item.image}']")
+    expect(page).to_not have_content("Sold by: #{item.merchant.name}")
+    expect(page).to_not have_content("Price: $#{item.price}")
+    expect(page).to_not have_content("Quantity: 1")
+  end
 end
