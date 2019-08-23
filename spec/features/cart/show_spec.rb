@@ -78,11 +78,13 @@ describe 'cart show page' do
     click_link 'Empty Cart'
 
     expect(current_path).to eq('/cart')
+    
     expect(page).to_not have_link('Empty Cart')
     expect(page).to_not have_content(item.name)
     expect(page).to_not have_css("img[src*='#{item.image}']")
     expect(page).to_not have_content("Sold by: #{item.merchant.name}")
     expect(page).to_not have_content("Price: $#{item.price}")
     expect(page).to_not have_content("Quantity: 1")
+    expect(page).to have_content("Grand Total: $0")
   end
 end

@@ -12,4 +12,10 @@ class CartController < ApplicationController
 
   def index
   end
+
+  def destroy
+    @contents = Hash.new(0)
+    session[:cart] = @contents
+    redirect_to '/cart'
+  end
 end

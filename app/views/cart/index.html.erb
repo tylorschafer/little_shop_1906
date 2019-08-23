@@ -11,5 +11,9 @@
     <p>Subtotal: $<%= cart.sub_total(item) %></p>
   </section>
   <% end %>
+  <% if cart.contents == {} %>
+  <% else %>
+    <%= link_to 'Empty Cart', '/cart/', method: :delete %>
+  <% end %>
   <h2>Grand Total: $<%= cart.grand_total %></h2>
 </section>

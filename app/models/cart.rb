@@ -30,4 +30,6 @@ class Cart
   def grand_total
     cart_items.sum{|item| item.price * count_of(item.id)}
   end
+
+  ## Class Methods
 end
