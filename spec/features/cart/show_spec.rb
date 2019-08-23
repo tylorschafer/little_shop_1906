@@ -23,8 +23,8 @@ describe 'cart show page' do
       within "#item-#{item.id}" do
         expect(page).to have_content(item.name)
         expect(page).to have_css("img[src*='#{item.image}']")
-        expect(page).to have_content(item.merchant.name)
-        expect(page).to have_content(item.price)
+        expect(page).to have_content("Sold by: #{item.merchant.name}")
+        expect(page).to have_content("Price: $#{item.price}")
         expect(page).to have_content("Quantity: 1")
       end
     end

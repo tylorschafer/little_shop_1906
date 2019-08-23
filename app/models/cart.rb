@@ -16,4 +16,18 @@ class Cart
   def count_of(item_id)
     @contents[item_id.to_s].to_i
   end
+
+  def cart_items
+    @contents.keys.map do |id|
+      Item.find(id)
+    end
+  end
+
+  def sub_total(item)
+    item.price * count_of(item.id)
+  end
+
+  def grand_total
+    cart_items.sum{|item| item.price * count_of(item.id)}
+  end
 end
