@@ -80,28 +80,29 @@ describe 'cart show page' do
     expect(current_path).to eq('/cart')
 
     expect(page).to_not have_link('Empty Cart')
-    expect(page).to_not have_content(item.name)
-    expect(page).to_not have_css("img[src*='#{item.image}']")
-    expect(page).to_not have_content("Sold by: #{item.merchant.name}")
-    expect(page).to_not have_content("Price: $#{item.price}")
+    expect(page).to_not have_content(@item_2.name)
+    expect(page).to_not have_css("img[src*='#{@item_2.image}']")
+    expect(page).to_not have_content("Sold by: #{@item_2.merchant.name}")
+    expect(page).to_not have_content("Price: $#{@item_2.price}")
     expect(page).to_not have_content("Quantity: 1")
     expect(page).to have_content("Grand Total: $0")
   end
 
   it "I can see links to remove certain items from the cart" do
     @items.each do |item|
-      visit "/items/#{item.id}"
-
-      2.times.click_link 'Add to Cart'
+      2.times do
+        visit "/items/#{item.id}"
+        click_button 'Add to Cart'
+      end
     end
+
     visit '/cart'
 
-    within("#item-#{@item_1.id}")
-
-    click_link 'Remove This Item From Cart'
+    within("#item-#{@item_1.id}") do
+      click_link 'Remove Item'
+    end
 
     expect(page).to_not have_css("#item-#{@item_1.id}")
-    expect(page).to_not have_content(item_1.name)
-    expect(page).to_not have_css("img[src*='#{item_1.image}']")
+    expect(page).to_not have_content(@item_1.name)
   end
 end

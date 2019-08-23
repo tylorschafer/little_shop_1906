@@ -31,5 +31,10 @@ class Cart
     cart_items.sum{|item| item.price * count_of(item.id)}
   end
 
+  def remove_item(id)
+    @contents.delete(id)
+    @contents
+  end
+
   ## Class Methods
 end
