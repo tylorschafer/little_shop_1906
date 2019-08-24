@@ -134,4 +134,22 @@ describe 'cart show page' do
       expect(page).to_not have_css("#item-#{@item_1.id}")
       expect(page).to_not have_content(@item_1.name)
   end
+
+  it "when there are items in my cart I see a button to checkout" do
+    visit '/cart'
+
+    expect(page).to_not have_button('Checkout')
+
+    visit "/items/#{@item_1.id}"
+
+    click_button 'Add to Cart'
+
+    visit '/cart'
+
+    expect(page).to have_button('Checkout')
+
+    click_button('Checkout')
+
+    expect(current_path).to eq('/order')
+  end
 end
