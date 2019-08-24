@@ -35,6 +35,14 @@ RSpec.describe 'item show page', type: :feature do
     expect(page).to have_css("img[src*='#{@chain.image}']")
   end
 
+  it "when trying to visit an item that doesn't exist I get an error message" do
+
+    visit "items/1000024"
+
+    expect(current_path).to eq('/items')
+    expect(page).to have_content("Sorry, that item does not exist")
+  end
+
   it 'shows reviews for that item' do
 
     visit "items/#{@chain.id}"
