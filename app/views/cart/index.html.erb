@@ -21,4 +21,7 @@
   <%= link_to 'Empty Cart', '/cart/', method: :delete %>
 <% end %>
 <h2>Grand Total: $<%= cart.grand_total %></h2>
+<% if cart.grand_total > 0 %>
+  <%= button_to 'Checkout', '/order', method: :get %>
+<% end %>
 </section>
