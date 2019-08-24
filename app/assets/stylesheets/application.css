@@ -17,6 +17,20 @@ img{
   width: 50%;
 }
 
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
  .grid-container{
  	display: grid;
  	grid-template-columns: repeat(5,1fr);
@@ -26,14 +40,10 @@ img{
 
  .cart-show-grid{
  	display: grid;
+  align-items: center;
  	grid-template-columns: repeat(5,1fr);
  	grid-template-rows: auto;
  	grid-gap: 30px;
- }
-
- #cart-footer{
-   float: right;
-   border-style: dashed;
  }
 
  .grid-item{
@@ -51,6 +61,16 @@ img{
   border-radius: 12px;
  	grid-template-columns: repeat(2,1fr);
  }
+
+ #cart-footer{
+   float: right;
+   border-style: dashed;
+ }
+
+ #empty-cart{
+   padding-left: 50px;
+ }
+
  #review-grid{
   align-content: center;
   width: 80%;
@@ -58,33 +78,66 @@ img{
   padding-left: 100px;
  	grid-template-columns: repeat(3,1fr);
  }
+
  #average-reviews {
    padding: 20px;
    text-align:center;
  }
+
  #new-review {
    text-align:center;
    grid-column: span 2;
  }
+
  #top-reviews{
  	padding: 20px;
  	text-align: left;
  }
+
  #low-reviews{
    padding: 20px;
    text-align: left;
  }
+
  #all-reviews{
    padding: 20px;
    text-align: left;
  }
+
  #span-3 {
    text-align: center;
    grid-column: span 3
  }
+
+ #quantity {
+   width: 100%;
+   display: inline-block;
+   text-align: left;
+   grid-row: 5;
+   vertical-align: bottom;
+   position: relative;
+ }
+
+ .quantity-inner {
+   display: inline-block;
+   float: left;
+   padding: 10px;
+ }
+
+ #checkout {
+   width: 50%;
+   background-color: Red;
+   color: white;
+   padding: 5px;
+   margin: 8px 0;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+ }
+
  .item-show-item{
  	padding: 20px;
- 	text-align: right;
+ 	/* text-align: right; */
  }
 
  .topnav {
@@ -110,18 +163,22 @@ img{
    text-align: center;
  }
 
+ .add-cart{
+   width: 25%;
+   background-color: Orange;
+   color: white;
+   padding: 5px;
+   margin: 8px 0;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+ }
 
- input[type=text], select {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
+ .add-cart:hover {
+   background-color: #45a049;
+ }
 
-input[type=submit] {
+.submit-form {
   width: 100%;
   background-color: #17BEBB;
   color: white;
@@ -132,10 +189,7 @@ input[type=submit] {
   cursor: pointer;
 }
 
-input[type=submit]:hover {
-  background-color: #45a049;
-}
-form {
+.form {
   align-content: center;
   background-color: #f2f2f2;
   padding: 20px;

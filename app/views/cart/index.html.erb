@@ -7,9 +7,11 @@
     <img src= <%= item.image %>>
     <p>Sold by: <%= item.merchant.name %></p>
     <p>Price: $<%= item.price %></p>
-    <span><%= button_to 'Subtract', "/cart/#{item.id}/remove", method: :patch %>
-    <p>Quantity: <%= cart.count_of(item.id) %></p>
-    <%= button_to 'Add', "/cart/#{item.id}/add", method: :patch %></span>
+    <section id='quantity'>
+      <%= button_to 'Subtract', "/cart/#{item.id}/remove", method: :patch, class:'quantity-inner' %>
+      <p class='quantity-inner'>Quantity: <%= cart.count_of(item.id) %></p>
+      <%= button_to 'Add', "/cart/#{item.id}/add", method: :patch, class:'quantity-inner' %>
+    </section>
     <p>Subtotal: $<%= cart.sub_total(item) %></p>
     <%= link_to 'Remove Item', "/cart/#{item.id}", method: :delete %>
   </section>
@@ -18,10 +20,10 @@
 <section id="cart-footer">
 <% if cart.contents == {} %>
 <% else %>
-  <%= link_to 'Empty Cart', '/cart/', method: :delete %>
+  <%= link_to 'Empty Cart', '/cart/', method: :delete, id:'empty-cart' %>
 <% end %>
 <h2>Grand Total: $<%= cart.grand_total %></h2>
 <% if cart.grand_total > 0 %>
-  <%= button_to 'Checkout', '/order', method: :get %>
+  <center><%= button_to 'Checkout', '/order', method: :get, id:'checkout' %></center>
 <% end %>
 </section>

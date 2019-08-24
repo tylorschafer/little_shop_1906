@@ -1,6 +1,6 @@
 <h1>Edit Review</h1>
 <center>
-  <%= form_tag "/items/#{@item_id}/#{@review.id}", method: :patch do %>
+  <%= form_tag "/items/#{@item_id}/#{@review.id}", method: :patch, class:"form" do %>
     <%= label_tag :title %>
     <%= text_field_tag :title, "#{@review.title}"%>
 
@@ -10,6 +10,6 @@
     <%= label_tag :rating %>
     <%= text_field_tag :rating, "#{@review.rating}" %>
 
-    <%= submit_tag 'Update Review' %>
+    <%= submit_tag 'Update Review', class:'submit-form' %>
   <% end %>
 </center>
