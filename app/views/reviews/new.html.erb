@@ -5,7 +5,7 @@
     <%= text_field_tag :title, nil, placeholder: "Title"%>
     <%= label_tag "Content" %>
     <%= text_field_tag :content, nil, placeholder: "Content"%>
-    <%= label_tag "Rating" %>
+    <%= label_tag "Rating (Must be between 1 and 5)" %>
     <%= number_field_tag :rating, nil, placeholder: "Rating"%>
     <%= submit_tag 'Create Review', class:'submit-form' %>
   <% end %>

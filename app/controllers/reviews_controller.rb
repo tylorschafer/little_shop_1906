@@ -6,12 +6,12 @@ class ReviewsController < ApplicationController
   def create
     item = Item.find(params[:id])
     review = item.reviews.create(review_params)
-    if Review.last != review
-      flash[:error] = review.errors.full_messages
-      redirect_to "/items/#{item.id}/reviews/new"
-    else
+    if review.save
       flash[:success] = 'Thank you for your review submission.'
       redirect_to "/items/#{item.id}"
+    else
+      flash[:error] = review.errors.full_messages
+      redirect_to "/items/#{item.id}/reviews/new"
     end
   end
 
@@ -23,8 +23,14 @@ class ReviewsController < ApplicationController
   def update
     item = Item.find(params[:item_id])
     review = Review.find(params[:review_id])
-    review.update(review_params)
-    redirect_to "/items/#{item.id}"
+    new_review = review.update(review_params)
+    if new_review
+      flash[:success] = 'You have updated your review.'
+      redirect_to "/items/#{item.id}"
+    else
+      flash[:error] = review.errors.full_messages
+      redirect_to "/items/#{item.id}/#{review.id}/edit"
+    end
   end
 
   def destroy

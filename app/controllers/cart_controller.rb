@@ -11,6 +11,11 @@ class CartController < ApplicationController
   end
 
   def index
+    cart.contents.each do |item_id, quantity|
+      if Item.where(id: item_id).empty?
+        session[:cart].delete(item_id)
+      end
+    end
   end
 
   def remove

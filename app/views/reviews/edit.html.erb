@@ -7,7 +7,7 @@
     <%= label_tag :content %>
     <%= text_field_tag :content, "#{@review.content}" %>
 
-    <%= label_tag :rating %>
+    <%= label_tag "Rating (Must be between 1 and 5)" %>
     <%= text_field_tag :rating, "#{@review.rating}" %>
 
     <%= submit_tag 'Update Review', class:'submit-form' %>
