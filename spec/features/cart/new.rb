@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Item show page' do
+describe 'Add Item to Car' do
   describe 'When a user adds items to their cart' do
     before :each do
       @merchant = Merchant.create(name: "Meg's Bike Shop", address: '123 Bike Rd.', city: 'Denver', state: 'CO', zip: 80203)
@@ -9,7 +9,7 @@ describe 'Item show page' do
       @items = [@item_1,@item_2]
     end
 
-    it 'displays a message' do
+    it 'It displays a message' do
 
       @items.each do |item|
 
@@ -21,8 +21,8 @@ describe 'Item show page' do
       end
     end
 
-    describe 'when adding multiples of items' do
-      it "the message correctly increments for multiple items in cart" do
+    describe 'When adding multiples of items' do
+      it "The message correctly increments for multiple items in cart" do
 
         @items.each do |item|
 
@@ -41,36 +41,35 @@ describe 'Item show page' do
       end
     end
 
-    describe 'when adding items' do
-      it 'displays the total number of items in the cart' do
+    it 'The indicator displays the total count of items in the cart' do
 
-        visit "/items/#{@item_1.id}"
+      visit "/items/#{@item_1.id}"
 
-        within ".topnav" do
-        expect(page).to have_content("Cart: 0")
-        end
+      within ".topnav" do
+      expect(page).to have_content("Cart: 0")
+      end
 
-        click_button "Add to Cart"
+      click_button "Add to Cart"
 
-        within ".topnav" do
-        expect(page).to have_content("Cart: 1")
-        end
+      within ".topnav" do
+      expect(page).to have_content("Cart: 1")
+      end
 
-        visit "/items/#{@item_2.id}"
+      visit "/items/#{@item_2.id}"
 
-        click_button "Add to Cart"
+      click_button "Add to Cart"
 
-        within ".topnav" do
-        expect(page).to have_content("Cart: 2")
-        end
+      within ".topnav" do
+      expect(page).to have_content("Cart: 2")
+      end
 
-        visit "/items/#{@item_1.id}"
+      visit "/items/#{@item_1.id}"
 
-        click_button "Add to Cart"
+      click_button "Add to Cart"
 
-        within ".topnav" do
-        expect(page).to have_content("Cart: 3")
-        end
+      within ".topnav" do
+      expect(page).to have_content("Cart: 3")
+
       end
     end
   end

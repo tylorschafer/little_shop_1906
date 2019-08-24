@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'item show page', type: :feature do
+describe 'Item Show Page' do
   before :each do
     @bike_shop = Merchant.create(
       name: "Brian's Bike Shop",
@@ -21,7 +21,7 @@ RSpec.describe 'item show page', type: :feature do
     @review_4 = @chain.reviews.create(title: "It's ok", content: "It's fine for the price", rating: 2.0)
     @reviews = [@review_1,@review_2,@review_3,@review_4]
   end
-  it 'shows item info' do
+  it 'Shows item info' do
 
     visit "items/#{@chain.id}"
 
@@ -35,7 +35,7 @@ RSpec.describe 'item show page', type: :feature do
     expect(page).to have_css("img[src*='#{@chain.image}']")
   end
 
-  it "when trying to visit an item that doesn't exist I get an error message" do
+  it "When trying to visit an item that doesn't exist I get an error message" do
 
     visit "items/1000024"
 
@@ -43,7 +43,7 @@ RSpec.describe 'item show page', type: :feature do
     expect(page).to have_content("Sorry, that item does not exist")
   end
 
-  it 'shows reviews for that item' do
+  it 'Shows reviews for that item' do
 
     visit "items/#{@chain.id}"
 

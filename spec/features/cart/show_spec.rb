@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'cart show page' do
+describe 'Cart Show Page' do
   before :each do
     @merchant = Merchant.create(name: "Meg's Bike Shop", address: '123 Bike Rd.', city: 'Denver', state: 'CO', zip: 80203)
     @item_1 = @merchant.items.create(name: "Gatorskins", description: "They'll never pop!", price: 100, image: "https://www.rei.com/media/4e1f5b05-27ef-4267-bb9a-14e35935f218?size=784x588", inventory: 3)
@@ -135,7 +135,7 @@ describe 'cart show page' do
       expect(page).to_not have_content(@item_1.name)
   end
 
-  it "when there are items in my cart I see a button to checkout" do
+  it "When there are items in my cart I see a button to checkout" do
     visit '/cart'
 
     expect(page).to_not have_button('Checkout')

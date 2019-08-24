@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe Merchant, type: :model do
-  describe "validations" do
+describe Merchant do
+  describe "Validations" do
     it { should validate_presence_of :name }
     it { should validate_presence_of :address }
     it { should validate_presence_of :city }
@@ -9,7 +9,7 @@ describe Merchant, type: :model do
     it { should validate_presence_of :zip }
   end
 
-  describe "relationships" do
+  describe "Relationships" do
     it {should have_many :items}
   end
 end

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'merchant new page', type: :feature do
+describe 'Merchant New Page', type: :feature do
   describe 'As a user' do
     it 'I can create a new merchant' do
       visit '/merchants/new'
@@ -29,6 +29,5 @@ RSpec.describe 'merchant new page', type: :feature do
       expect(new_merchant.state).to eq(state)
       expect(new_merchant.zip).to eq(zip)
     end
-
   end
 end

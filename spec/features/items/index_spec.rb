@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Items Index Page" do
+describe "Items Index Page" do
   describe "When I visit the items index page" do
     before(:each) do
       @meg = Merchant.create(name: "Meg's Bike Shop", address: '123 Bike Rd.', city: 'Denver', state: 'CO', zip: 80203)
@@ -56,7 +56,6 @@ RSpec.describe "Items Index Page" do
         expect(page).to have_content("Sold by: #{@brian.name}")
         expect(page).to have_css("img[src*='#{@dog_bone.image}']")
       end
-
     end
   end
 end
