@@ -51,6 +51,7 @@
           <h3>Rating: <%= review.rating %></h3>
           <p><%= review.content %></p>
           <%= link_to 'Edit Review', "/items/#{@item.id}/#{review.id}/edit" %>
+          <%= link_to 'Delete Review', "/items/#{@item.id}/#{review.id}", method: :delete %>
         </section>
     </section>
       <% end %>
