@@ -8,6 +8,7 @@ describe "Item show page" do
       @review_1 = @tire.reviews.create(title: "Santi's review", content: "This product isn't great", rating: 1)
       @review_2 = @tire.reviews.create(title: "Meg's Review", content: "I really like this!", rating: 5)
     end
+
     it 'I can see the prepopulated fields of that item' do
       visit "/items/#{@tire.id}"
 
@@ -19,7 +20,7 @@ describe "Item show page" do
       expect(current_path).to eq("/items/#{@tire.id}/#{@review_1.id}/edit")
       expect(find_field('Title').value).to eq "Santi's review"
       expect(find_field('Content').value).to eq "This product isn't great"
-      expect(find_field('Rating').value).to eq 1
+      expect(find_field('Rating').value).to eq '1'
     end
 
     it 'I can edit review content by filling the form and clicking submit' do
@@ -34,9 +35,9 @@ describe "Item show page" do
       click_on "Edit Review"
       end
 
-      fill_in 'Title', with: title
-      fill_in 'Content', with: content
-      fill_in 'Rating', with: rating
+      fill_in 'title', with: title
+      fill_in 'content', with: content
+      fill_in 'rating', with: rating
 
       click_button "Update Review"
 
