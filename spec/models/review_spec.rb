@@ -21,19 +21,19 @@ describe Review do
       @pull_toy_review_4 = @pull_toy.reviews.create(title: "It's ok", content: "It's fine for the price", rating: 2.0)
     end
     it ".top_rated can show top three review ratings" do
-      expect(Review.top_rated).to eq(
+      expect(Review.top_rated(@pull_toy.id)).to eq(
         [@pull_toy_review_1,@pull_toy_review_2,@pull_toy_review_3]
       )
     end
 
     it ".bottom_rated can show bottom three review ratings" do
-      expect(Review.bottom_rated).to eq(
+      expect(Review.bottom_rated(@pull_toy.id)).to eq(
         [@pull_toy_review_4,@pull_toy_review_3,@pull_toy_review_2]
       )
     end
 
     it ".average_rating can show all reviews average rating" do
-      expect(Review.average_rating).to eq(3.5)
+      expect(Review.average_rating(@pull_toy.id)).to eq(3.5)
     end
   end
 end

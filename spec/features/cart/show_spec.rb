@@ -21,7 +21,7 @@ describe 'Cart Show Page' do
 
     @items.each do |item|
       within "#item-#{item.id}" do
-        expect(page).to have_content(item.name)
+        expect(page).to have_link(item.name)
         expect(page).to have_css("img[src*='#{item.image}']")
         expect(page).to have_content("Sold by: #{item.merchant.name}")
         expect(page).to have_content("Price: $#{item.price}")
@@ -80,7 +80,7 @@ describe 'Cart Show Page' do
     expect(current_path).to eq('/cart')
 
     expect(page).to_not have_link('Empty Cart')
-    expect(page).to_not have_content(@item_2.name)
+    expect(page).to_not have_link(@item_2.name)
     expect(page).to_not have_css("img[src*='#{@item_2.image}']")
     expect(page).to_not have_content("Sold by: #{@item_2.merchant.name}")
     expect(page).to_not have_content("Price: $#{@item_2.price}")
