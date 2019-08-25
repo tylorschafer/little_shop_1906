@@ -3,9 +3,12 @@ require 'rails_helper'
 describe "Item Edit" do
   describe "When I visit an Item Show Page" do
     describe "and click on edit item" do
-      it 'I can see the prepopulated fields of that item' do
+      before :each do
         @meg = Merchant.create(name: "Meg's Bike Shop", address: '123 Bike Rd.', city: 'Denver', state: 'CO', zip: 80203)
         @tire = @meg.items.create(name: "Gatorskins", description: "They'll never pop!", price: 100, image: "https://www.rei.com/media/4e1f5b05-27ef-4267-bb9a-14e35935f218?size=784x588", inventory: 12)
+        @tire.reviews.create(title: "Gets the job done", content: "My pooch loves this product, has lasted for weeks already!", rating: 5.0)
+      end
+      it 'I can see the prepopulated fields of that item' do
 
         visit "/items/#{@tire.id}"
 
@@ -23,8 +26,6 @@ describe "Item Edit" do
       end
 
       it 'I can change and update item with the form' do
-        @meg = Merchant.create(name: "Meg's Bike Shop", address: '123 Bike Rd.', city: 'Denver', state: 'CO', zip: 80203)
-        @tire = @meg.items.create(name: "Gatorskins", description: "They'll never pop!", price: 100, image: "https://www.rei.com/media/4e1f5b05-27ef-4267-bb9a-14e35935f218?size=784x588", inventory: 12)
 
         visit "/items/#{@tire.id}"
 

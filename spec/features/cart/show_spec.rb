@@ -6,6 +6,8 @@ describe 'Cart Show Page' do
     @item_1 = @merchant.items.create(name: "Gatorskins", description: "They'll never pop!", price: 100, image: "https://www.rei.com/media/4e1f5b05-27ef-4267-bb9a-14e35935f218?size=784x588", inventory: 3)
     @item_2 = @merchant.items.create(name: "Raptorskins", description: "This is different", price: 80, image: "https://www.rei.com/media/4e1f5b05-27ef-4267-bb9a-14e35935f218?size=784x588", inventory: 8)
     @items = [@item_1,@item_2]
+    @item_1.reviews.create(title: "Gets the job done", content: "My pooch loves this product, has lasted for weeks already!", rating: 5.0)
+    @item_2.reviews.create(title: "Good Buy!", content: "This is a great toy, very durable and good quality", rating: 4.0)
   end
   it 'I see all my items I added to the cart' do
 

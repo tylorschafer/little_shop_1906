@@ -8,6 +8,9 @@ describe "Items Index Page" do
       @tire = @meg.items.create(name: "Gatorskins", description: "They'll never pop!", price: 100, image: "https://www.rei.com/media/4e1f5b05-27ef-4267-bb9a-14e35935f218?size=784x588", inventory: 12)
       @pull_toy = @brian.items.create(name: "Pull Toy", description: "Great pull toy!", price: 10, image: "http://lovencaretoys.com/image/cache/dog/tug-toy-dog-pull-9010_2-800x800.jpg", inventory: 32)
       @dog_bone = @brian.items.create(name: "Dog Bone", description: "They'll love it!", price: 21, image: "https://img.chewy.com/is/image/catalog/54226_MAIN._AC_SL1500_V1534449573_.jpg", active?:false, inventory: 21)
+      @tire.reviews.create(title: "Gets the job done", content: "My pooch loves this product, has lasted for weeks already!", rating: 5.0)
+      @pull_toy.reviews.create(title: "Good Buy!", content: "This is a great toy, very durable and good quality", rating: 4.0)
+      @dog_bone.reviews.create(title: "Good Buy!", content: "This is a great toy, very durable and good quality", rating: 4.0)
     end
 
     it "all items or merchant names are links" do

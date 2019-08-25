@@ -9,12 +9,7 @@ describe 'Item Show Page' do
       state: 'CO',
       zip: 80203
     )
-    @chain = @bike_shop.items.create(
-      name: "Chain", description: "It'll never break!",
-      price: 50,
-      image: "https://www.rei.com/media/b61d1379-ec0e-4760-9247-57ef971af0ad?size=784x588",
-      inventory: 5
-    )
+    @chain = @bike_shop.items.create(name: "Chain", description: "It'll never break!", price: 50, image: "https://www.rei.com/media/b61d1379-ec0e-4760-9247-57ef971af0ad?size=784x588", inventory: 5)
     @review_1 = @chain.reviews.create(title: "Gets the job done", content: "My pooch loves this product, has lasted for weeks already!", rating: 5.0)
     @review_2 = @chain.reviews.create(title: "Good Buy!", content: "This is a great toy, very durable and good quality", rating: 4.0)
     @review_3 = @chain.reviews.create(title: "Could be better", content: "Meh meh meh meh", rating: 3.0)
