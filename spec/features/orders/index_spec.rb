@@ -12,13 +12,13 @@ describe 'Order Index Page' do
     @item_2.reviews.create(title: "Meg's Review", content: "I really like this!", rating: 5)
   end
 
-  # it "Can't access order index without items in cart" do
-  #
-  #   visit '/order'
-  #
-  #   expect(current_path).to eq('/items')
-  #   expect(page).to have_content('Sorry, you have no items in your cart to process an order')
-  # end
+  it "Can't access order index without items in cart" do
+
+    visit '/order'
+
+    expect(current_path).to eq('/items')
+    expect(page).to have_content('Sorry, you have no items in your cart to process an order')
+  end
 
   it "I see all the details of my cart" do
 
