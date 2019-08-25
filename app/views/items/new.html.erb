@@ -2,7 +2,7 @@
 
 <center>
   <%= form_tag "/merchants/#{@merchant.id}/items", method: :post, class:"form" do %>
-    <%= text_field_tag :name, "Name"%>
+    <%= text_field_tag :name, nil, placeholder: "Name"%>
 
     <%= text_field_tag :description, nil, placeholder: "Description" %>
 
