@@ -62,6 +62,13 @@ input[type=text], select {
  	grid-template-columns: repeat(2,1fr);
  }
 
+ #review-edit {
+   text-align: left;
+ }
+ #review-delete {
+   text-align: right;
+ }
+
  #cart-footer{
    float: right;
    border-style: dashed;
@@ -72,10 +79,13 @@ input[type=text], select {
  }
 
  #review-grid{
-  align-content: center;
+  justity-items: center;
+  vertical-align: text-top;
   width: 80%;
  	display: grid;
   padding-left: 100px;
+  border-top-style: groove;
+  border-top-width: 5px;
  	grid-template-columns: repeat(3,1fr);
  }
 
@@ -99,9 +109,16 @@ input[type=text], select {
    text-align: left;
  }
 
- #all-reviews{
+ #all-reviews {
+   vertical-align: text-top;
    padding: 20px;
    text-align: left;
+ }
+
+ section[id^='review-'] {
+   vertical-align: text-top;
+   padding: 10px;
+   margin-top: 10px;
  }
 
  #span-3 {
