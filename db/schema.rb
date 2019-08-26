@@ -46,6 +46,11 @@ ActiveRecord::Schema.define(version: 20190824204400) do
   end
 
   create_table "orders", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

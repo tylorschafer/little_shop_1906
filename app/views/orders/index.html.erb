@@ -13,19 +13,21 @@
 <section id="order-footer">
   <h2>Grand Total: $<%= cart.grand_total %></h2>
   <center>
-    <%= form_tag "/order/", method: :post, class:"form" do %>
-    <h2>Please Enter Your Shipping info:</h2>
-      <%= text_field_tag :name, nil, placeholder: "Name"%>
+    <%= form_tag "/orders/", method: :post, class:"form" do %>
+    <section id="customer-info">
+      <h2>Please Enter Your Shipping info:</h2>
+        <%= text_field_tag :name, nil, placeholder: "Name"%>
 
-      <%= text_field_tag :address, nil, placeholder: "Address" %>
+        <%= text_field_tag :address, nil, placeholder: "Address" %>
 
-      <%= text_field_tag :city, nil, placeholder: "City" %>
+        <%= text_field_tag :city, nil, placeholder: "City" %>
 
-      <%= text_field_tag :state, nil, placeholder: "State" %>
+        <%= text_field_tag :state, nil, placeholder: "State" %>
 
-      <%= text_field_tag :zip, nil, placeholder: "Zip" %>
+        <%= text_field_tag :zip, nil, placeholder: "Zip" %>
 
-      <%= submit_tag 'Create Order', class:'submit-form' %>
+        <%= submit_tag 'Create Order', class:'submit-form' %>
+      </section>
     <% end %>
   </center>
 </section>

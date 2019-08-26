@@ -1,6 +1,17 @@
 require 'rails_helper'
 
 describe 'When I fill out all order information' do
+  before :each do
+    @meg = Merchant.create(name: "Meg's Bike Shop", address: '123 Bike Rd.', city: 'Denver', state: 'CO', zip: 80203)
+    @brian = Merchant.create(name: "Brian's Dog Shop", address: '125 Doggo St.', city: 'Denver', state: 'CO', zip: 80210)
+    @tire = @meg.items.create(name: "Gatorskins", description: "They'll never pop!", price: 100, image: "https://www.rei.com/media/4e1f5b05-27ef-4267-bb9a-14e35935f218?size=784x588", inventory: 12)
+    @item_1 = @brian.items.create(name: "Pull Toy", description: "Great pull toy!", price: 10, image: "http://lovencaretoys.com/image/cache/dog/tug-toy-dog-pull-9010_2-800x800.jpg", inventory: 32)
+    @item_2 = @brian.items.create(name: "Dog Bone", description: "They'll love it!", price: 21, image: "https://img.chewy.com/is/image/catalog/54226_MAIN._AC_SL1500_V1534449573_.jpg", inventory: 21)
+    @items = [@item_1,@item_2]
+    @item_1.reviews.create(title: "Santi's review", content: "This product isn't great", rating: 1)
+    @item_2.reviews.create(title: "Meg's Review", content: "I really like this!", rating: 5)
+  end
+
   it "An order is created and saved in database, and all info is displayed on the show page" do
 
     name = 'Tylor Schafer'
