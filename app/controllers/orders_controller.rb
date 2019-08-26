@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
     order = Order.create(shipping_params)
     if order.save
       flash[:success] = 'Thank you for your order! Your products will arive in the next 20 - 30 business years.'
-      redirect_to '/'
+      redirect_to "/order/#{order.id}"
     else
       flash[:error] = order.errors.full_messages
       redirect_to '/order'
