@@ -6,5 +6,6 @@ class Order < ApplicationRecord
                         :address,
                         :city,
                         :state,
-                        :zip
+                        :zip,
+                        :grand_total
 end

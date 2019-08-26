@@ -6,6 +6,7 @@ class CreateOrders < ActiveRecord::Migration[5.1]
       t.string :city
       t.string :state
       t.string :zip
+      t.integer :grand_total
 
       t.timestamps
     end

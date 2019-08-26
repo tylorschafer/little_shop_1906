@@ -26,7 +26,7 @@ describe 'When I fill out all order information' do
       })
 
     @items.each do |item|
-      visit "/items/#{@item_1.id}"
+      visit "/items/#{item.id}"
 
       click_button 'Add to Cart'
     end
