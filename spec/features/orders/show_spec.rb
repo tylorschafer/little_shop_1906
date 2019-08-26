@@ -46,14 +46,14 @@ describe 'When I fill out all order information' do
 
     new_order = Order.last
 
-    expect(current_path).to eq("/orders/#{new_order}")
+    expect(current_path).to eq("/orders/#{new_order.id}")
 
     @items.each do |item|
       within "#review-item-#{item.id}" do
         expect(page).to have_link(item.name)
         expect(page).to have_content("Merchant: #{item.merchant.name}")
         expect(page).to have_content("Price: $#{item.price}")
-        expect(page).to have_content("Quantity: #{cart.count_of(item.id)}")
+        expect(page).to have_content("Quantity: 1")
         expect(page).to have_content("Subtotal: $#{cart.sub_total(item)}")
       end
     end
