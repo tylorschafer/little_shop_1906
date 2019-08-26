@@ -14,7 +14,7 @@ describe 'Order Index Page' do
 
   it "Can't access order index without items in cart" do
 
-    visit '/order'
+    visit '/orders'
 
     expect(current_path).to eq('/items')
     expect(page).to have_content('Sorry, you have no items in your cart to process an order')
@@ -32,7 +32,7 @@ describe 'Order Index Page' do
 
     click_button 'Checkout'
 
-    expect(current_path).to eq('/order')
+    expect(current_path).to eq('/orders')
 
     cart = Cart.new({
         "#{@item_1.id}" => 1,
@@ -61,13 +61,15 @@ describe 'Order Index Page' do
 
     click_button 'Checkout'
 
-    visit '/order'
+    visit '/orders'
 
-    expect(find_field('Name'))
-    expect(find_field('Address'))
-    expect(find_field('City'))
-    expect(find_field('State'))
-    expect(find_field('Zip'))
-    expect(find_button('Create Order'))
+    within '#customer-info' do
+      expect(find_field('Name'))
+      expect(find_field('Address'))
+      expect(find_field('City'))
+      expect(find_field('State'))
+      expect(find_field('Zip'))
+      expect(find_button('Create Order'))
+    end
   end
 end

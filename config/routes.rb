@@ -32,5 +32,5 @@ Rails.application.routes.draw do
   delete "/cart/:item_id", to: 'cart#delete'
   delete '/cart', to: 'cart#destroy'
 
-  get '/order', to: 'orders#index'
+  get '/orders', to: 'orders#index'
 end

@@ -152,6 +152,6 @@ describe 'Cart Show Page' do
 
     click_button('Checkout')
 
-    expect(current_path).to eq('/order')
+    expect(current_path).to eq('/orders')
   end
 end

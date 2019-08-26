@@ -24,6 +24,6 @@
 <% end %>
 <h2>Grand Total: $<%= cart.grand_total %></h2>
 <% if cart.grand_total > 0 %>
-  <center><%= button_to 'Checkout', '/order', method: :get, id:'checkout' %></center>
+  <center><%= button_to 'Checkout', '/orders', method: :get, id:'checkout' %></center>
 <% end %>
 </section>
