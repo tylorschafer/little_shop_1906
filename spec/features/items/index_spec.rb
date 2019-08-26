@@ -1,15 +1,16 @@
 require 'rails_helper'
 
-RSpec.describe "Items Index Page" do
+describe "Items Index Page" do
   describe "When I visit the items index page" do
     before(:each) do
       @meg = Merchant.create(name: "Meg's Bike Shop", address: '123 Bike Rd.', city: 'Denver', state: 'CO', zip: 80203)
       @brian = Merchant.create(name: "Brian's Dog Shop", address: '125 Doggo St.', city: 'Denver', state: 'CO', zip: 80210)
-
       @tire = @meg.items.create(name: "Gatorskins", description: "They'll never pop!", price: 100, image: "https://www.rei.com/media/4e1f5b05-27ef-4267-bb9a-14e35935f218?size=784x588", inventory: 12)
-
       @pull_toy = @brian.items.create(name: "Pull Toy", description: "Great pull toy!", price: 10, image: "http://lovencaretoys.com/image/cache/dog/tug-toy-dog-pull-9010_2-800x800.jpg", inventory: 32)
       @dog_bone = @brian.items.create(name: "Dog Bone", description: "They'll love it!", price: 21, image: "https://img.chewy.com/is/image/catalog/54226_MAIN._AC_SL1500_V1534449573_.jpg", active?:false, inventory: 21)
+      @tire.reviews.create(title: "Gets the job done", content: "My pooch loves this product, has lasted for weeks already!", rating: 5.0)
+      @pull_toy.reviews.create(title: "Good Buy!", content: "This is a great toy, very durable and good quality", rating: 4.0)
+      @dog_bone.reviews.create(title: "Good Buy!", content: "This is a great toy, very durable and good quality", rating: 4.0)
     end
 
     it "all items or merchant names are links" do
@@ -56,7 +57,6 @@ RSpec.describe "Items Index Page" do
         expect(page).to have_content("Sold by: #{@brian.name}")
         expect(page).to have_css("img[src*='#{@dog_bone.image}']")
       end
-
     end
   end
 end

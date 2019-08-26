@@ -3,23 +3,13 @@ require 'rails_helper'
 describe "Create new review" do
   describe "when i visit the item show page" do
     before :each do
-      @bike_shop = Merchant.create!(
-        name: "Brian's Bike Shop",
-        address: '123 Bike Rd.',
-        city: 'Denver',
-        state: 'CO',
-        zip: 80203
-      )
-      @chain = @bike_shop.items.create(
-        name: "Chain",
-        description: "It'll never break!",
-        price: 50,
-        image: "https://www.rei.com/media/b61d1379-ec0e-4760-9247-57ef971af0ad?size=784x588",
-        inventory: 5
-      )
+      @bike_shop = Merchant.create!(name: "Brian's Bike Shop", address: '123 Bike Rd.', city: 'Denver', state: 'CO', zip: 80203)
+      @chain = @bike_shop.items.create(name: "Chain", description: "It'll never break!", price: 50, image: "https://www.rei.com/media/b61d1379-ec0e-4760-9247-57ef971af0ad?size=784x588", inventory: 5)
       @title = "review"
       @content = "this product is great"
       @rating = 4
+      @chain.reviews.create(title: "Santi's review", content: "This product isn't great", rating: 1)
+
     end
     it "I can create a new review by filling out a form" do
 
@@ -55,7 +45,7 @@ describe "Create new review" do
       click_button "Create Review"
 
       expect(current_path).to eq("/items/#{@chain.id}/reviews/new")
-      
+
       within ".error" do
         expect(page).to have_content("Rating Number must be between 1 and 5")
       end

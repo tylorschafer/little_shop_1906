@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "As a Visitor" do
+describe "Merchant Edit" do
   describe "After visiting a merchants show page and clicking on updating that merchant" do
     before :each do
       @bike_shop = Merchant.create(name: "Brian's Bike Shop", address: '123 Bike Rd.', city: 'Richmond', state: 'VA', zip: 11234)

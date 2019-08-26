@@ -1,6 +1,6 @@
 <h1 align= "center">Create Merchant</h1>
 <center>
-  <%= form_tag '/merchants', method: :post do |f| %>
+  <%= form_tag '/merchants', method: :post, class:"form" do |f| %>
     <%= text_field_tag :name, nil, placeholder: "Name" %>
 
     <%= text_field_tag :address, nil, placeholder: "Address" %>
@@ -11,6 +11,6 @@
 
     <%= text_field_tag :zip, nil, placeholder: "Zip" %>
 
-    <%= submit_tag 'Create Merchant' %>
+    <%= submit_tag 'Create Merchant', class:'submit-form' %>
   <% end %>
 </center>

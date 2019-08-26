@@ -1,11 +1,13 @@
 require 'rails_helper'
 
-describe 'cart show page' do
+describe 'Cart Show Page' do
   before :each do
     @merchant = Merchant.create(name: "Meg's Bike Shop", address: '123 Bike Rd.', city: 'Denver', state: 'CO', zip: 80203)
     @item_1 = @merchant.items.create(name: "Gatorskins", description: "They'll never pop!", price: 100, image: "https://www.rei.com/media/4e1f5b05-27ef-4267-bb9a-14e35935f218?size=784x588", inventory: 3)
     @item_2 = @merchant.items.create(name: "Raptorskins", description: "This is different", price: 80, image: "https://www.rei.com/media/4e1f5b05-27ef-4267-bb9a-14e35935f218?size=784x588", inventory: 8)
     @items = [@item_1,@item_2]
+    @item_1.reviews.create(title: "Gets the job done", content: "My pooch loves this product, has lasted for weeks already!", rating: 5.0)
+    @item_2.reviews.create(title: "Good Buy!", content: "This is a great toy, very durable and good quality", rating: 4.0)
   end
   it 'I see all my items I added to the cart' do
 
@@ -21,7 +23,7 @@ describe 'cart show page' do
 
     @items.each do |item|
       within "#item-#{item.id}" do
-        expect(page).to have_content(item.name)
+        expect(page).to have_link(item.name)
         expect(page).to have_css("img[src*='#{item.image}']")
         expect(page).to have_content("Sold by: #{item.merchant.name}")
         expect(page).to have_content("Price: $#{item.price}")
@@ -80,7 +82,7 @@ describe 'cart show page' do
     expect(current_path).to eq('/cart')
 
     expect(page).to_not have_link('Empty Cart')
-    expect(page).to_not have_content(@item_2.name)
+    expect(page).to_not have_link(@item_2.name)
     expect(page).to_not have_css("img[src*='#{@item_2.image}']")
     expect(page).to_not have_content("Sold by: #{@item_2.merchant.name}")
     expect(page).to_not have_content("Price: $#{@item_2.price}")
@@ -133,5 +135,23 @@ describe 'cart show page' do
       end
       expect(page).to_not have_css("#item-#{@item_1.id}")
       expect(page).to_not have_content(@item_1.name)
+  end
+
+  it "When there are items in my cart I see a button to checkout" do
+    visit '/cart'
+
+    expect(page).to_not have_button('Checkout')
+
+    visit "/items/#{@item_1.id}"
+
+    click_button 'Add to Cart'
+
+    visit '/cart'
+
+    expect(page).to have_button('Checkout')
+
+    click_button('Checkout')
+
+    expect(current_path).to eq('/order')
   end
 end
