@@ -10,4 +10,8 @@ class Merchant <ApplicationRecord
   def has_order
     Item.joins(:order_items).where(merchant_id: self.id).count(:id) >= 1
   end
+
+  def items_count
+    Item.where(merchant_id: self.id).count(:id)
+  end
 end
