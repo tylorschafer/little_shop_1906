@@ -13,13 +13,13 @@ class Item <ApplicationRecord
 
   def update_inventory
     order_item = OrderItem.last
-    self.inventory -= order_item.quantity
+    self.inventory -= order_item.quantity unless order_item.item_id != self.id
     if self.inventory <= 0
       self.update_attribute(:active?, false)
     end
   end
 
   def has_order
-    OrderItem.where(item_id: self.id.to_s).count(:item_id) >= 0
+    OrderItem.where(item_id: self.id.to_s).count(:item_id) > 0
   end
 end

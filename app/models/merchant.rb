@@ -6,4 +6,8 @@ class Merchant <ApplicationRecord
                         :city,
                         :state,
                         :zip
+
+  def has_order
+    Item.joins(:order_items).where(merchant_id: self.id).count(:id) >= 1
+  end
 end

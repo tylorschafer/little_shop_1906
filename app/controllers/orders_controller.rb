@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
         quantity: cart.count_of(item.id),
         sub_total: cart.sub_total(item)
       )
-      orditem.item.update_inventory
+      item.update_inventory
     end
   end
 
