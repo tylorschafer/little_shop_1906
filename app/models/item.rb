@@ -11,12 +11,12 @@ class Item <ApplicationRecord
                         :inventory
   validates_inclusion_of :active?, :in => [true, false]
 
-  def update_inventory
-    order_item = OrderItem.last
-    self.inventory -= order_item.quantity unless order_item.item_id != self.id
-    if self.inventory <= 0
+  def update_inventory(quantity)
+    self.update_attribute(:inventory, self.inventory - quantity)
+    if inventory <= 0
       self.update_attribute(:active?, false)
     end
+    reload
   end
 
   def has_order
