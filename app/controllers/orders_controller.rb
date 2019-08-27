@@ -12,13 +12,14 @@ class OrdersController < ApplicationController
 
   def create_order_items(order_id)
     cart.cart_items.each do |item|
-      OrderItem.create!(
+      orditem = OrderItem.create!(
         order_id: order_id,
         item_id: item.id,
         price: item.price,
         quantity: cart.count_of(item.id),
         sub_total: cart.sub_total(item)
       )
+      orditem.item.update_inventory
     end
   end
 
