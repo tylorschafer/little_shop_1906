@@ -15,8 +15,6 @@ class OrdersController < ApplicationController
       OrderItem.create!(
         order_id: order_id,
         item_id: item.id,
-        item_name: item.name,
-        merchant_name: item.merchant.name,
         price: item.price,
         quantity: cart.count_of(item.id),
         sub_total: cart.sub_total(item)
@@ -25,17 +23,14 @@ class OrdersController < ApplicationController
   end
 
   def create
-    params = shipping_params
-    params[:grand_total] = cart.grand_total
-    order = Order.create(params)
+    order = Order.create(shipping_params)
     if order.save
       create_order_items(order.id)
-      flash[:success] = 'Thank you for your order! Your products will arive in the next 20 - 30 business years.'
       session[:cart] = Hash.new(0)
       redirect_to "/orders/#{order.id}"
     else
       flash[:error] = order.errors.full_messages
-      redirect_to '/order'
+      redirect_to '/orders'
     end
   end
 
@@ -46,6 +41,8 @@ class OrdersController < ApplicationController
   private
 
   def shipping_params
-    params.permit(:name, :address, :city, :state, :zip)
+    ship_params = params.permit(:name, :address, :city, :state, :zip)
+    ship_params[:grand_total] = cart.grand_total
+    ship_params
   end
 end

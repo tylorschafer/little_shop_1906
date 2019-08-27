@@ -10,20 +10,15 @@ describe 'When I fill out all order information' do
     @items = [@item_1,@item_2]
     @item_1.reviews.create(title: "Santi's review", content: "This product isn't great", rating: 1)
     @item_2.reviews.create(title: "Meg's Review", content: "I really like this!", rating: 5)
+    @name = 'Tylor Schafer'
+    @address = '123 fake lane'
+    @city = 'Denver'
+    @state = 'Colorado'
+    @zip = '80124'
+    @cart = Cart.new({"#{@item_1.id}" => 1, "#{@item_2.id}" => 1})
   end
 
   it "An order is created and saved in database, and all info is displayed on the show page" do
-
-    name = 'Tylor Schafer'
-    address = '123 fake lane'
-    city = 'Denver'
-    state = 'Colorado'
-    zip = '80124'
-
-    cart = Cart.new({
-        "#{@item_1.id}" => 1,
-        "#{@item_2.id}" => 1
-      })
 
     @items.each do |item|
       visit "/items/#{item.id}"
@@ -36,11 +31,11 @@ describe 'When I fill out all order information' do
     click_button 'Checkout'
 
     within '#customer-info' do
-      fill_in 'Name', with: name
-      fill_in 'Address', with: address
-      fill_in 'City', with: city
-      fill_in 'State', with: state
-      fill_in 'Zip', with: zip
+      fill_in 'Name', with: @name
+      fill_in 'Address', with: @address
+      fill_in 'City', with: @city
+      fill_in 'State', with: @state
+      fill_in 'Zip', with: @zip
       click_button 'Create Order'
     end
 
@@ -54,11 +49,36 @@ describe 'When I fill out all order information' do
         expect(page).to have_content("Merchant: #{item.merchant.name}")
         expect(page).to have_content("Price: $#{item.price}")
         expect(page).to have_content("Quantity: 1")
-        expect(page).to have_content("Subtotal: $#{cart.sub_total(item)}")
+        expect(page).to have_content("Subtotal: $#{@cart.sub_total(item)}")
       end
     end
 
-    expect(page).to have_content("Grand Total: $#{cart.grand_total}")
+    expect(page).to have_content("Grand Total: $#{@cart.grand_total}")
     expect(page).to have_content("Order Place On: #{new_order.created_at.strftime("%Y-%m-%d")}")
+  end
+
+  it "If the shipping form is not fully filled out it will display an error message" do
+    @items.each do |item|
+      visit "/items/#{item.id}"
+
+      click_button 'Add to Cart'
+    end
+
+    visit '/cart'
+
+    click_button 'Checkout'
+
+    within '#customer-info' do
+      fill_in 'Address', with: @address
+      fill_in 'City', with: @city
+      fill_in 'State', with: @state
+      fill_in 'Zip', with: @zip
+      click_button 'Create Order'
+    end
+
+      new_order = Order.last
+
+      expect(page).to have_content("Name can't be blank")
+      expect(page).to_not have_content("Order Place On: ")
   end
 end

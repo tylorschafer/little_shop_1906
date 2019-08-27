@@ -41,8 +41,6 @@ ActiveRecord::Schema.define(version: 20190824204400) do
   create_table "order_items", force: :cascade do |t|
     t.bigint "item_id"
     t.bigint "order_id"
-    t.string "item_name"
-    t.string "merchant_name"
     t.integer "price"
     t.integer "quantity"
     t.integer "sub_total"

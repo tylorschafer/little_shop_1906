@@ -11,7 +11,7 @@
       <%= button_to '-', "/cart/#{item.id}/remove", method: :patch, params: { add: false, path: '/cart'}, class:'quantity-inner' %>
       <p class='quantity-inner'>Quantity: <%= cart.count_of(item.id) %></p>
       <%= button_to '+', "/cart/#{item.id}/add", method: :patch, params: { add: true, path: '/cart'}, class:'quantity-inner' %>
-    </section>s
+    </section>
     <p>Subtotal: $<%= cart.sub_total(item) %></p>
     <%= link_to 'Remove Item', "/cart/#{item.id}", method: :delete %>
   </section>
