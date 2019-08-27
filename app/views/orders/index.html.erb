@@ -3,7 +3,7 @@
   <% cart.cart_items.each do |item| %>
   <section id="review-item-<%=item.id%>">
     <h3><%= link_to item.name, "/items/#{item.id}" %></h3>
-    <p>Merchant: <%= item.merchant.name %></p>
+    <p>Merchant: <%= link_to item.merchant.name, "/merchants/#{item.merchant.id}" %></p>
     <p>Price: $<%= item.price %></p>
     <p>Quantity: <%= cart.count_of(item.id) %></p>
     <p>Subtotal: $<%= cart.sub_total(item) %></p>

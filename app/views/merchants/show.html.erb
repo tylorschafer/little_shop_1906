@@ -8,3 +8,18 @@
   <ul><%= link_to "Delete Merchant", "/merchants/#{@merchant.id}", method: :delete %>
 <% end %>
 </ul>
+
+<% if @merchant.items.empty? == false %>
+  <section id="merchant-stats">
+    <ul>
+      <li><h2> <%= @merchant.name %> Seller Stats:</h2></li>
+      <li>Total Items: <%= @merchant.items_count %></li>
+      <li>Average Item Price: $<%=@merchant.average_item_price.round(1)%></li>
+      <ul><p>Orders shipped to:</p>
+        <% @merchant.distinct_cities.each do |city| %>
+          <li><%= city %></li>
+        <% end %>
+      </ul>
+    </ul>
+  </section>
+<% end %>

@@ -43,8 +43,31 @@ describe Merchant do
       expect(@brian.average_item_price).to eq(45)
     end
 
-    it "#distinct cities returns all disctinct cities merchant items have been ordered" do
+    it "#distinct_cities returns all disctinct cities merchant items have been ordered" do
 
+      order_1 = Order.create!(name: 'Tylor Schafer', address: '123 Fake Lane', city: 'Fakeville', state: 'CO', zip: 80130, grand_total: 10)
+      order_1.order_items.create!(
+        item_id: @item_2.id,
+        price: @item_2.price,
+        quantity: 1,
+        sub_total: 80
+      )
+      order_2 = Order.create!(name: 'Tylor Schafer', address: '123 Fake Lane', city: 'Denver', state: 'CO', zip: 80130, grand_total: 10)
+      order_2.order_items.create!(
+        item_id: @item_1.id,
+        price: @item_1.price,
+        quantity: 1,
+        sub_total: 10
+      )
+      order_3 = Order.create!(name: 'Tylor Schafer', address: '123 Fake Lane', city: 'Fakeville', state: 'CO', zip: 80130, grand_total: 10)
+      order_3.order_items.create!(
+        item_id: @item_2.id,
+        price: @item_2.price,
+        quantity: 1,
+        sub_total: 80
+      )
+
+      expect(@brian.distinct_cities).to eq([order_2.city, order_1.city])
     end
 
   end

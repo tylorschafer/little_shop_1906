@@ -8,14 +8,21 @@ class Merchant <ApplicationRecord
                         :zip
 
   def has_order
-    Item.joins(:order_items).where(merchant_id: self.id).count(:id) >= 1
+    items.joins(:order_items).count(:id) >= 1
   end
 
   def items_count
-    Item.where(merchant_id: self.id).count(:id)
+    items.count
   end
 
   def average_item_price
-    Item.where(merchant_id: self.id).average(:price)
+    items.average(:price)
+  end
+
+  def distinct_cities
+    items.joins(:orders)
+      .distinct
+      .order('orders.city')
+      .pluck('orders.city')
   end
 end

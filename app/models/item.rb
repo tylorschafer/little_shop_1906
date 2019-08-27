@@ -20,6 +20,6 @@ class Item <ApplicationRecord
   end
 
   def has_order
-    OrderItem.where(item_id: self.id.to_s).count(:item_id) > 0
+    order_items.count(:item_id) > 0
   end
 end

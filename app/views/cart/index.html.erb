@@ -5,7 +5,7 @@
   <section id="item-<%=item.id%>">
     <h3><%= link_to item.name, "/items/#{item.id}" %></h3>
     <img src= <%= item.image %>>
-    <p>Sold by: <%= item.merchant.name %></p>
+    <p>Sold by: <%= link_to item.merchant.name, "/merchants/#{item.merchant.id}" %></p>
     <p>Price: $<%= item.price %></p>
     <section id='quantity'>
       <%= button_to '-', "/cart/#{item.id}/remove", method: :patch, params: { add: false, path: '/cart'}, class:'quantity-inner' %>

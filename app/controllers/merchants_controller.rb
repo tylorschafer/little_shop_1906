@@ -12,8 +12,14 @@ class MerchantsController <ApplicationController
   end
 
   def create
-    Merchant.create(merchant_params)
-    redirect_to "/merchants"
+    merchant = Merchant.create(merchant_params)
+    if merchant.save
+      flash[:succes] = "Thank You for signing up to become a Merchant!"
+      redirect_to "/merchants/#{merchant.id}"
+    else
+      flash[:error] = merchant.errors.full_messages
+      redirect_to "/merchants/new"
+    end
   end
 
   def edit
@@ -23,7 +29,13 @@ class MerchantsController <ApplicationController
   def update
     merchant = Merchant.find(params[:id])
     merchant.update(merchant_params)
-    redirect_to "/merchants/#{merchant.id}"
+    if merchant.save
+      flash[:success] = "Thank You for updating your information!"
+      redirect_to "/merchants/#{merchant.id}"
+    else
+      flash[:error] = merchant.errors.full_messages
+      redirect_to "/merchants/#{merchant.id}/edit"
+    end
   end
 
   def destroy
