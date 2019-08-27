@@ -39,7 +39,8 @@ class ItemsController<ApplicationController
   end
 
   def destroy
-    Item.destroy(params[:id])
+    item = Item.destroy(params[:id])
+    # session[:cart].delete(item.id)
     redirect_to '/items'
   end
 

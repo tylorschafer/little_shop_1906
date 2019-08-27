@@ -28,6 +28,14 @@ describe Cart do
         expect(@cart.contents).to eq({"#{@item_1.id}" => 19, "#{@item_2.id}" => 18, '4' => 1})
       end
     end
+
+    it "#subtract_item removes a single quantity of an item from cart contents" do
+      @cart.subtract_item(@item_1.id)
+      @cart.subtract_item(@item_2.id)
+
+      expect(@cart.contents).to eq({"#{@item_1.id}" => 18, "#{@item_2.id}" => 17})
+    end
+
     it "#remove_item removes an item and its quantity from cart" do
         @cart.add_item('4')
 

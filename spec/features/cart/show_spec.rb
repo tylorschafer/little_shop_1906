@@ -118,23 +118,24 @@ describe 'Cart Show Page' do
     visit '/cart'
 
     within("#item-#{@item_1.id}") do
-      click_button 'Add'
+      click_button '+'
       expect(page).to have_content("Quantity: 2")
-      click_button 'Add'
+      click_button '+'
       expect(page).to have_content("Quantity: 3")
-      click_button 'Add'
+      click_button '+'
     end
+
     expect(page).to have_content("Sorry this is the maximum order size allowed for this item.")
 
     within("#item-#{@item_1.id}") do
-      click_button 'Subtract'
+      click_button '-'
       expect(page).to have_content("Quantity: 2")
-      click_button 'Subtract'
+      click_button '-'
       expect(page).to have_content("Quantity: 1")
-      click_button 'Subtract'
+      click_button '-'
       end
-      expect(page).to_not have_css("#item-#{@item_1.id}")
-      expect(page).to_not have_content(@item_1.name)
+
+      expect(current_path).to eq('/items')
   end
 
   it "When there are items in my cart I see a button to checkout" do
