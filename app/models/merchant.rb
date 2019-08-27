@@ -14,4 +14,8 @@ class Merchant <ApplicationRecord
   def items_count
     Item.where(merchant_id: self.id).count(:id)
   end
+
+  def average_item_price
+    Item.where(merchant_id: self.id).average(:price)
+  end
 end

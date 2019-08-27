@@ -40,7 +40,7 @@ describe Merchant do
     end
 
     it "#average_item_price will return the average price of all items" do
-
+      expect(@brian.average_item_price).to eq(45)
     end
 
     it "#distinct cities returns all disctinct cities merchant items have been ordered" do
