@@ -1,3 +1,4 @@
+/* Globals */
  body {
  background-color: white;
  }
@@ -31,28 +32,27 @@ input[type=text], select {
   box-sizing: border-box;
 }
 
+/* Global Classes */
  .grid-container{
  	display: grid;
  	grid-template-columns: repeat(5,1fr);
  	grid-template-rows: auto;
  	grid-gap: 30px;
  }
-
- .cart-show-grid{
- 	display: grid;
-  align-items: center;
- 	grid-template-columns: repeat(5,1fr);
- 	grid-template-rows: auto;
- 	grid-gap: 30px;
- }
-
  .grid-item{
- 	background-color: #17BEBB;
+  margin-top: 5%;
+ 	background-color: #77D5EA;
  	padding: 20px;
   border: solid;
  	border-radius: 12px;
   border-color: #002244;
  	text-align: center
+ }
+ .cart-show-grid{
+   display: grid;
+   grid-template-columns: repeat(5,1fr);
+   grid-template-rows: auto;
+   grid-gap: 30px;
  }
  .item-show-grid{
   width: 60%;
@@ -60,106 +60,42 @@ input[type=text], select {
   border: solid;
   border-radius: 12px;
  	grid-template-columns: repeat(2,1fr);
- }
-
- #review-edit {
-   text-align: left;
- }
- #review-delete {
-   text-align: right;
- }
-
- #cart-footer{
-   float: right;
-   border-style: dashed;
- }
-
- #empty-cart{
-   padding-left: 50px;
- }
-
- #review-grid{
-  justity-items: center;
-  vertical-align: text-top;
-  width: 80%;
- 	display: grid;
-  padding-left: 100px;
-  border-top-style: groove;
-  border-top-width: 5px;
- 	grid-template-columns: repeat(3,1fr);
- }
-
- #average-reviews {
-   padding: 20px;
-   text-align:center;
- }
-
- #new-review {
-   text-align:center;
-   grid-column: span 2;
- }
-
- #top-reviews{
- 	padding: 20px;
- 	text-align: left;
- }
-
- #low-reviews{
-   padding: 20px;
-   text-align: left;
- }
-
- #all-reviews {
-   vertical-align: text-top;
-   padding: 20px;
-   text-align: left;
- }
-
- section[id^='review-'] {
-   vertical-align: text-top;
-   padding: 10px;
-   margin-top: 10px;
- }
-
- #span-3 {
+}
+  /* Flash Styling */
+ .error {
+   border-style: solid;
+   border-color: Black;
    text-align: center;
-   grid-column: span 3
+   border-radius: 10%;
+   background-color: red;
+   color: White;
+   margin: 5px 40%;
+   width: 20%;
+ }
+ .success {
+   border-style: solid;
+   border-color: Black;
+   text-align: center;
+   border-radius: 10%;
+   background-color: green;
+   color: White;
+   margin: 5px 40%;
+   width: 20%;
  }
 
- #quantity {
-   width: 100%;
-   display: inline-block;
-   text-align: left;
-   grid-row: 5;
-   vertical-align: bottom;
-   position: relative;
+ .notice {
+   border-style: solid;
+   border-color: Black;
+   text-align: center;
+   border-radius: 10%;
+   background-color: Gold;
+   color: Black;
+   margin: 5px 40%;
+   width: 20%;
  }
-
- .quantity-inner {
-   display: inline-block;
-   float: left;
-   padding: 10px;
- }
-
- #checkout {
-   width: 50%;
-   background-color: Red;
-   color: white;
-   padding: 5px;
-   margin: 8px 0;
-   border: none;
-   border-radius: 4px;
-   cursor: pointer;
- }
-
- .item-show-item{
- 	padding: 20px;
- 	/* text-align: right; */
- }
-
  .topnav {
    overflow: hidden;
-   background-color: #002244;
+   background-color: #404E4D;
  }
 
  .topnav a {
@@ -176,6 +112,9 @@ input[type=text], select {
    color: black;
  }
 
+ .item-show-item{
+ 	padding: 20px;
+ }
  .address{
    text-align: center;
  }
@@ -197,7 +136,7 @@ input[type=text], select {
 
 .submit-form {
   width: 100%;
-  background-color: #17BEBB;
+  background-color: #5BC0EB;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -213,35 +152,152 @@ input[type=text], select {
   width: 60%;
 }
 
- /* Flash Styling */
-.error {
-  border-style: solid;
-  border-color: Black;
+/* Reviews */
+#span-3 {
   text-align: center;
-  border-radius: 10%;
-  background-color: red;
-  color: White;
-  margin: 5px 40%;
-  width: 20%;
-}
-.success {
-  border-style: solid;
-  border-color: Black;
-  text-align: center;
-  border-radius: 10%;
-  background-color: green;
-  color: White;
-  margin: 5px 40%;
-  width: 20%;
+  grid-column: span 3;
+  padding: 5px;
+  margin: 5px 5px;
+  border-style: none;
 }
 
-.notice {
-  border-style: solid;
-  border-color: Black;
+#quantity {
+  	display: table;
+  	width: 100%;
+    border: 1px solid #444444;
+}
+.quantity-child {
+  display: table-cell;
+  background-color: #404E4D;
+  vertical-align: middle;
+}
+
+#quantity-minus {
+  margin: 5px 5px;
+  font-size: 20px;
+  border-radius: 12px;
+  border-color: #002244;
+  text-align: center
+}
+
+#quantity-plus {
+  margin: 5px 5px;
+  border-radius: 12px;
+  font-size: 20px;
+  border-color: #002244;
   text-align: center;
-  border-radius: 10%;
-  background-color: Gold;
-  color: Black;
-  margin: 5px 40%;
-  width: 20%;
+}
+#quantity-text {
+  background-color: #9BC53D;
+  padding: 5px;
+  margin: 5px 10px;
+  font-size: 12px;
+  margin-right: 5%;
+  border: solid;
+  border-radius: 12px;
+  border-color: #002244;
+  text-align: center;
+  font-style: oblique;
+}
+#checkout {
+  width: 50%;
+  background-color: Red;
+  color: white;
+  padding: 5px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.review-item{
+ margin-top: 5%;
+ padding: 20px;
+ border: solid;
+ border-radius: 12px;
+ border-color: #002244;
+ text-align: center
+}
+#review-edit {
+  text-align: left;
+}
+#review-delete {
+  text-align: right;
+}
+
+#cart-footer{
+  float: right;
+  border-style: dashed;
+}
+
+#empty-cart{
+  padding-left: 50px;
+}
+
+#review-grid{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-template-rows: auto;
+  grid-gap: 30px;
+}
+#average-reviews {
+  background-color: #CECE94;
+  padding: 15px;
+  text-align: center;
+}
+#new-review {
+  text-align:center;
+  grid-column: span 2;
+}
+#top-reviews{
+ background-color: #D0E5C3;
+ padding: 15px;
+ text-align: center;
+}
+#low-reviews{
+  background-color: #BC7B7A;
+  padding: 15px;
+  text-align: center;
+}
+#all-reviews {
+  vertical-align: text-top;
+  padding: 15px;
+  text-align: left;
+}
+.order-show-grid{
+ display: grid;
+ grid-template-columns: repeat(5,1fr);
+ grid-template-rows: auto;
+ grid-gap: 30px;
+}
+.order-grid-item{
+ margin-top: 5%;
+ background-color: #D0E5C3;
+ padding: 5px;
+ border: solid;
+ border-radius: 12px;
+ border-color: #002244;
+ text-align: center
+}
+
+#order-text {
+  text-align: center;
+}
+
+#order-statement {
+  text-align: center;
+  font-weight: lighter;
+  font-family: fantasy;
+}
+
+#footer-summary {
+  background-color: #CC8F7E;
+  margin-top: 5%;
+  float: right;
+  width: 25%;
+  margin-bottom: 0;
+  padding: 5px;
+  border: solid;
+  border-radius: 12px;
+  border-color: #002244;
+  text-align: center
 }

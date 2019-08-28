@@ -1,15 +1,18 @@
 <h1>Thank You For Your Order!</h1>
-<h2>Order Summary: </h2>
+<h3 id="order-statement">Your items should arrive in the next 5 to 10 Business Years</h3>
+<h2 id="order-text">Order Summary: </h2>
 
-<% @order.order_items.each do |order_item| %>
-<section id="review-item-<%=order_item.item_id%>">
-  <%= link_to order_item.item.name, "/items/#{order_item.item.merchant.id}" %>
-  <p>Merchant: <%= link_to order_item.item.merchant.name, "/merchants/#{}"%></p>
-  <p>Price: $<%= order_item.price %></p>
-  <p>Quantity: <%= order_item.quantity %></p>
-  <p>Subtotal: $<%= order_item.sub_total%></p>
+<section class="order-show-grid">
+  <% @order.order_items.each do |order_item| %>
+  <section id="review-item-<%=order_item.item_id%>" class="order-grid-item">
+    <%= link_to order_item.item.name, "/items/#{order_item.item.merchant.id}" %>
+    <p>Merchant: <%= link_to order_item.item.merchant.name, "/merchants/#{}"%></p>
+    <p>Price: $<%= order_item.price %></p>
+    <p>Quantity: <%= order_item.quantity %></p>
+    <p>Subtotal: $<%= order_item.sub_total%></p>
+  </section>
+  <% end %>
 </section>
-<% end %>
 <section id="footer-summary">
   <h3>Grand Total: $<%= @order.grand_total %></h3>
   <h3>Order Place On: <%= @order.created_at.strftime("%Y-%m-%d") %></h3>

@@ -9,6 +9,7 @@ describe 'Cart Show Page' do
     @item_1.reviews.create(title: "Gets the job done", content: "My pooch loves this product, has lasted for weeks already!", rating: 5.0)
     @item_2.reviews.create(title: "Good Buy!", content: "This is a great toy, very durable and good quality", rating: 4.0)
   end
+
   it 'I see all my items I added to the cart' do
 
     visit "/items/#{@item_1.id}"

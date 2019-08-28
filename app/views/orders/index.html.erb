@@ -1,7 +1,7 @@
 <h1>Order Form</h1>
 <section class="order-show-grid">
   <% cart.cart_items.each do |item| %>
-  <section id="review-item-<%=item.id%>">
+  <section id="review-item-<%=item.id%>" class="order-grid-item">
     <h3><%= link_to item.name, "/items/#{item.id}" %></h3>
     <p>Merchant: <%= link_to item.merchant.name, "/merchants/#{item.merchant.id}" %></p>
     <p>Price: $<%= item.price %></p>
