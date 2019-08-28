@@ -138,6 +138,19 @@ describe 'Cart Show Page' do
       expect(current_path).to eq('/items')
   end
 
+  it "The cart will not display items that have been deleted" do
+    visit "/items/#{@item_1.id}"
+
+    click_button 'Add to Cart'
+
+    visit "/items/#{@item_1.id}"
+    click_link 'Delete Item'
+
+    visit '/cart'
+
+    expect(page).to_not have_link(@item_1.name)
+  end
+
   it "When there are items in my cart I see a button to checkout" do
     visit '/cart'
 
@@ -155,4 +168,6 @@ describe 'Cart Show Page' do
 
     expect(current_path).to eq('/orders')
   end
+
+
 end

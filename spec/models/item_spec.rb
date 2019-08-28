@@ -53,6 +53,18 @@ describe Item do
 
       expect(@item_1.inventory).to eq(31)
 
+      order_2 = Order.create!(name: 'Tylor Schafer', address: '123 Fake Lane', city: 'Denver', state: 'CO', zip: 80130, grand_total: 10)
+      order_2.order_items.create!(
+        item_id: @item_1.id,
+        price: @item_1.price,
+        quantity: 31,
+        sub_total: 10
+      )
+
+      @item_1.update_inventory(31)
+
+      expect(@item_1.inventory).to eq(0)
+      expect(@item_1.active?).to eq(false)
     end
   end
 end

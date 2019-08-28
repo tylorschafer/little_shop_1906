@@ -1,7 +1,7 @@
 class CartController < ApplicationController
   include ActionView::Helpers::TextHelper
 
-  def index
+  def show
     cart.contents.each do |item_id, quantity|
       if Item.where(id: item_id).empty?
         session[:cart].delete(item_id)
