@@ -10,6 +10,13 @@ describe 'Cart Show Page' do
     @item_2.reviews.create(title: "Good Buy!", content: "This is a great toy, very durable and good quality", rating: 4.0)
   end
 
+  it "I see a message when there are no items in my cart" do
+    visit '/cart'
+
+    expect(page).to have_content("You have no items in your cart")
+    expect(page).to_not have_link('Empty Cart')
+  end
+
   it 'I see all my items I added to the cart' do
 
     visit "/items/#{@item_1.id}"

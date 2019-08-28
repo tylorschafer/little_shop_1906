@@ -2,9 +2,13 @@ class CartController < ApplicationController
   include ActionView::Helpers::TextHelper
 
   def show
-    cart.contents.each do |item_id, quantity|
-      if Item.where(id: item_id).empty?
-        session[:cart].delete(item_id)
+    if cart.contents.empty?
+      flash[:notice] = "You have no items in your cart."
+    else
+      cart.contents.each do |item_id, quantity|
+        if Item.where(id: item_id).empty?
+          session[:cart].delete(item_id)
+        end
       end
     end
   end
