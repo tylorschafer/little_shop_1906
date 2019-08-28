@@ -41,11 +41,20 @@ ActiveRecord::Schema.define(version: 20190824204400) do
   create_table "order_items", force: :cascade do |t|
     t.bigint "item_id"
     t.bigint "order_id"
+    t.integer "price"
+    t.integer "quantity"
+    t.integer "sub_total"
     t.index ["item_id"], name: "index_order_items_on_item_id"
     t.index ["order_id"], name: "index_order_items_on_order_id"
   end
 
   create_table "orders", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.integer "grand_total"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -49,6 +49,24 @@ describe "Item Edit" do
         expect(page).to have_content("They're a bit more expensive, and they kinda do pop sometimes, but whatevs.. this is retail.")
         expect(page).to_not have_content("They'll never pop!")
       end
+
+      it 'When an item does not update an error message will be displayed.' do
+
+        visit "/items/#{@tire.id}"
+
+        click_on "Edit Item"
+
+        fill_in 'Name', with: "GatorSkins"
+        fill_in 'Price', with: 110
+        fill_in 'Description', with: ""
+        fill_in 'Image', with: "https://www.rei.com/media/4e1f5b05-27ef-4267-bb9a-14e35935f218?size=784x588"
+        fill_in 'Inventory', with: 11
+
+        click_button "Update Item"
+
+        expect(current_path).to eq("/items/#{@tire.id}/edit")
+        expect(page).to have_content("Description can't be blank")
+      end
     end
   end
 end

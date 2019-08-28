@@ -13,6 +13,10 @@ class Cart
     @contents[item_id.to_s] = count_of(item_id) + 1
   end
 
+  def subtract_item(item_id)
+    @contents[item_id.to_s] = count_of(item_id) - 1
+  end
+
   def count_of(item_id)
     @contents[item_id.to_s].to_i
   end

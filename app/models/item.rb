@@ -11,4 +11,15 @@ class Item <ApplicationRecord
                         :inventory
   validates_inclusion_of :active?, :in => [true, false]
 
+  def update_inventory(quantity)
+    self.update_attribute(:inventory, self.inventory - quantity)
+    if inventory <= 0
+      self.update_attribute(:active?, false)
+    end
+    reload
+  end
+
+  def has_order
+    order_items.count(:item_id) > 0
+  end
 end

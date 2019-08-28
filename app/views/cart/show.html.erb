@@ -1,0 +1,35 @@
+<h1>Your Cart</h1>
+
+<section class="cart-show-grid">
+  <% cart.cart_items.each do |item| %>
+  <section class="grid-item" id="item-<%=item.id%>">
+    <h3><%= link_to item.name, "/items/#{item.id}" %></h3>
+    <img src= <%= item.image %>>
+    <p>Sold by: <%= link_to item.merchant.name, "/merchants/#{item.merchant.id}" %></p>
+    <p>Price: $<%= item.price %></p>
+    <section id='quantity'>
+      <section class='quantity-child'>
+        <%= button_to '-', "/cart/#{item.id}/remove", method: :patch, params: { add: false, path: '/cart'}, id:'quantity-minus' %>
+      </section>
+      <section class='quantity-child'>
+      <p id='quantity-text'>Quantity: <%= cart.count_of(item.id) %></p>
+      </section>
+      <section class='quantity-child'>
+      <%= button_to '+', "/cart/#{item.id}/add", method: :patch, params: { add: true, path: '/cart'}, id:'quantity-plus' %>
+      </section>
+    </section>
+    <p>Subtotal: $<%= cart.sub_total(item) %></p>
+    <%= link_to 'Remove Item', "/cart/#{item.id}", method: :delete %>
+  </section>
+  <% end %>
+</section>
+<section id="cart-footer">
+<% if cart.contents == {} %>
+<% else %>
+  <%= link_to 'Empty Cart', '/cart/', method: :delete, id:'empty-cart' %>
+<% end %>
+<h2>Grand Total: $<%= cart.grand_total %></h2>
+<% if cart.grand_total > 0 %>
+  <center><%= button_to 'Checkout', '/orders', method: :get, id:'checkout' %></center>
+<% end %>
+</section>

@@ -9,6 +9,7 @@ describe 'Cart Show Page' do
     @item_1.reviews.create(title: "Gets the job done", content: "My pooch loves this product, has lasted for weeks already!", rating: 5.0)
     @item_2.reviews.create(title: "Good Buy!", content: "This is a great toy, very durable and good quality", rating: 4.0)
   end
+
   it 'I see all my items I added to the cart' do
 
     visit "/items/#{@item_1.id}"
@@ -118,23 +119,37 @@ describe 'Cart Show Page' do
     visit '/cart'
 
     within("#item-#{@item_1.id}") do
-      click_button 'Add'
+      click_button '+'
       expect(page).to have_content("Quantity: 2")
-      click_button 'Add'
+      click_button '+'
       expect(page).to have_content("Quantity: 3")
-      click_button 'Add'
+      click_button '+'
     end
+
     expect(page).to have_content("Sorry this is the maximum order size allowed for this item.")
 
     within("#item-#{@item_1.id}") do
-      click_button 'Subtract'
+      click_button '-'
       expect(page).to have_content("Quantity: 2")
-      click_button 'Subtract'
+      click_button '-'
       expect(page).to have_content("Quantity: 1")
-      click_button 'Subtract'
+      click_button '-'
       end
-      expect(page).to_not have_css("#item-#{@item_1.id}")
-      expect(page).to_not have_content(@item_1.name)
+
+      expect(current_path).to eq('/items')
+  end
+
+  it "The cart will not display items that have been deleted" do
+    visit "/items/#{@item_1.id}"
+
+    click_button 'Add to Cart'
+
+    visit "/items/#{@item_1.id}"
+    click_link 'Delete Item'
+
+    visit '/cart'
+
+    expect(page).to_not have_link(@item_1.name)
   end
 
   it "When there are items in my cart I see a button to checkout" do
@@ -152,6 +167,8 @@ describe 'Cart Show Page' do
 
     click_button('Checkout')
 
-    expect(current_path).to eq('/order')
+    expect(current_path).to eq('/orders')
   end
+
+
 end

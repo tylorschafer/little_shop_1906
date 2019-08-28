@@ -1,9 +1,9 @@
 <h1>Order Form</h1>
 <section class="order-show-grid">
   <% cart.cart_items.each do |item| %>
-  <section id="review-item-<%=item.id%>">
+  <section id="review-item-<%=item.id%>" class="order-grid-item">
     <h3><%= link_to item.name, "/items/#{item.id}" %></h3>
-    <p>Merchant: <%= item.merchant.name %></p>
+    <p>Merchant: <%= link_to item.merchant.name, "/merchants/#{item.merchant.id}" %></p>
     <p>Price: $<%= item.price %></p>
     <p>Quantity: <%= cart.count_of(item.id) %></p>
     <p>Subtotal: $<%= cart.sub_total(item) %></p>
@@ -13,19 +13,21 @@
 <section id="order-footer">
   <h2>Grand Total: $<%= cart.grand_total %></h2>
   <center>
-    <%= form_tag "/order/", method: :post, class:"form" do %>
-    <h2>Please Enter Your Shipping info:</h2>
-      <%= text_field_tag :name, nil, placeholder: "Name"%>
+    <%= form_tag "/orders/", method: :post, class:"form" do %>
+    <section id="customer-info">
+      <h2>Please Enter Your Shipping info:</h2>
+        <%= text_field_tag :name, nil, placeholder: "Name"%>
 
-      <%= text_field_tag :address, nil, placeholder: "Address" %>
+        <%= text_field_tag :address, nil, placeholder: "Address" %>
 
-      <%= text_field_tag :city, nil, placeholder: "City" %>
+        <%= text_field_tag :city, nil, placeholder: "City" %>
 
-      <%= text_field_tag :state, nil, placeholder: "State" %>
+        <%= text_field_tag :state, nil, placeholder: "State" %>
 
-      <%= text_field_tag :zip, nil, placeholder: "Zip" %>
+        <%= text_field_tag :zip, nil, placeholder: "Zip" %>
 
-      <%= submit_tag 'Create Order', class:'submit-form' %>
+        <%= submit_tag 'Create Order', class:'submit-form' %>
+      </section>
     <% end %>
   </center>
 </section>

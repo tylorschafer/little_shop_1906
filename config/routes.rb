@@ -25,12 +25,14 @@ Rails.application.routes.draw do
   patch "/items/:item_id/:review_id", to: 'reviews#update'
   delete "/items/:item_id/:review_id", to: 'reviews#destroy'
 
-  get '/cart', to: 'cart#index'
+  get '/cart', to: 'cart#show'
   patch "/cart/:item_id", to: 'cart#update'
-  patch "/cart/:item_id/add", to: 'cart#add'
-  patch "/cart/:item_id/remove", to: 'cart#remove'
+  patch "/cart/:item_id/add", to: 'cart#update'
+  patch "/cart/:item_id/remove", to: 'cart#update'
   delete "/cart/:item_id", to: 'cart#delete'
   delete '/cart', to: 'cart#destroy'
 
-  get '/order', to: 'orders#index'
+  get '/orders', to: 'orders#index'
+  get '/orders/:id', to: 'orders#show'
+  post '/orders', to: 'orders#create'
 end

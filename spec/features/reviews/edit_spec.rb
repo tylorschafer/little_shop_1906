@@ -46,5 +46,27 @@ describe "Item show page" do
       expect(page).to have_content(content)
       expect(page).to have_content("Rating: #{rating}")
     end
+
+    it 'I see an error message when the review does not update' do
+      title = "John's Review"
+      content = ""
+      rating = 3
+
+      visit "/items/#{@tire.id}"
+
+      within "#review-#{@review_1.id}" do
+      expect(page).to have_link("Edit Review")
+      click_on "Edit Review"
+      end
+
+      fill_in 'title', with: title
+      fill_in 'content', with: content
+      fill_in 'rating', with: rating
+
+      click_button "Update Review"
+
+      expect(current_path).to eq("/items/#{@tire.id}/#{@review_1.id}/edit")
+      expect(page).to have_content("Content can't be blank")
+    end
   end
 end

@@ -11,48 +11,52 @@
       <p>Inventory: <%= @item.inventory %> </p>
       <% if @item.active? %>
         <p style= "color:green">Active</p>
-        <%= button_to 'Add to Cart', "/cart/#{@item.id}", method: :patch, class:'add-cart' %>
+        <%= button_to 'Add to Cart', "/cart/#{@item.id}", method: :patch, params: {add: true, path: "/items/#{@item.id}"}, class:'add-cart' %>
       <% else %>
         <p style= "color:red">Inactive</p>
       <% end %>
-      <p><%= link_to "Edit Item", "/items/#{@item.id}/edit" %></p>
-      <p><%= link_to "Delete Item", "/items/#{@item.id}", method: :delete %></p>
+      <% if @item.has_order == false%>
+        <p><%= link_to "Delete Item", "/items/#{@item.id}", method: :delete %></p>
+      <% end %>
     </section>
+    <p><%= link_to "Edit Item", "/items/#{@item.id}/edit" %></p>
   </section>
 </center>
-<footer id = "review-grid">
-  <section id="average-reviews">
-    <h2>Average Review Rating: <%= Review.average_rating(@item.id).round(1) %></h2>
-    <%= link_to 'Add New Review', "/items/#{@item.id}/reviews/new" %>
-  </section>
-  <section id= "top-reviews">
-    <h2>Top Reviews: </h2>
-    <% Review.top_rated(@item.id).each do |review| %>
-      <section id="top-review<%=review.id%>">
-        <p><%=review.title%> : <%=review.rating%></p>
+<% if @item.reviews.empty? == false %>
+  <footer id = "review-grid">
+    <section id="average-reviews" class="review-item">
+      <h2>Average Review Rating: <%= Review.average_rating(@item.id).round(1) %></h2>
+      <%= link_to 'Add New Review', "/items/#{@item.id}/reviews/new" %>
+    </section>
+    <section id= "top-reviews" class="review-item">
+      <h2>Top Reviews: </h2>
+      <% Review.top_rated(@item.id).each do |review| %>
+        <section id="top-review<%=review.id%>">
+          <p><%=review.title%> : <%=review.rating%></p>
+          </section>
+          <% end %>
+        </section>
+        <section id = "low-reviews" class="review-item">
+          <h2>Lowest Reviews: </h2>
+          <% Review.bottom_rated(@item.id).each do |review| %>
+          <section id="low-review<%=review.id%>">
+            <p><%=review.title%> : <%=review.rating%></p>
         </section>
         <% end %>
       </section>
-      <section id = "low-reviews">
-        <h2>Lowest Reviews: </h2>
-        <% Review.bottom_rated(@item.id).each do |review| %>
-        <section id="low-review<%=review.id%>">
-          <p><%=review.title%> : <%=review.rating%></p>
+      <section id="span-3" class="review-item">
+      <h2>All Reviews: </h2>
+    </section>
+      <section id= "all-reviews">
+        <% @item.reviews.each do |review| %>
+          <section id= "review-<%=review.id%>" class="review-item">
+            <h2><%= review.title %></h2>
+            <h3>Rating: <%= review.rating %></h3>
+            <p><%= review.content %></p>
+            <%= link_to 'Edit Review', "/items/#{@item.id}/#{review.id}/edit", id:'review-edit' %>
+            <%= link_to 'Delete Review', "/items/#{@item.id}/#{review.id}", method: :delete, id:'review-delete' %>
+          </section>
       </section>
-      <% end %>
-    </section>
-    <section id="span-3">
-    <h2>All Reviews: </h2>
-  </section>
-    <section id= "all-reviews">
-      <% @item.reviews.each do |review| %>
-        <section id= "review-<%=review.id%>">
-          <h2><%= review.title %></h2>
-          <h3>Rating: <%= review.rating %></h3>
-          <p><%= review.content %></p>
-          <%= link_to 'Edit Review', "/items/#{@item.id}/#{review.id}/edit", id:'review-edit' %>
-          <%= link_to 'Delete Review', "/items/#{@item.id}/#{review.id}", method: :delete, id:'review-delete' %>
-        </section>
-    </section>
+        <% end %>
       <% end %>
 </footer>
