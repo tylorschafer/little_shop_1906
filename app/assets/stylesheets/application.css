@@ -212,3 +212,36 @@ input[type=text], select {
   padding: 20px;
   width: 60%;
 }
+
+ /* Flash Styling */
+.error {
+  border-style: solid;
+  border-color: Black;
+  text-align: center;
+  border-radius: 10%;
+  background-color: red;
+  color: White;
+  margin: 5px 40%;
+  width: 20%;
+}
+.success {
+  border-style: solid;
+  border-color: Black;
+  text-align: center;
+  border-radius: 10%;
+  background-color: green;
+  color: White;
+  margin: 5px 40%;
+  width: 20%;
+}
+
+.notice {
+  border-style: solid;
+  border-color: Black;
+  text-align: center;
+  border-radius: 10%;
+  background-color: Gold;
+  color: Black;
+  margin: 5px 40%;
+  width: 20%;
+}

@@ -33,5 +33,21 @@ describe "Merchant Edit" do
       expect(page).to have_content("Brian's Super Cool Bike Shop")
       expect(page).to have_content("1234 New Bike Rd.\nDenver, CO 80204")
     end
+
+    it 'I can see an error message when my merchant is not updated' do
+      visit "/merchants/#{@bike_shop.id}"
+      click_on "Update Merchant"
+
+      fill_in 'Name', with: "Brian's Super Cool Bike Shop"
+      fill_in 'Address', with: "1234 New Bike Rd."
+      fill_in 'City', with: "Denver"
+      fill_in 'State', with: ""
+      fill_in 'Zip', with: 80204
+
+      click_button "Update Merchant"
+
+      expect(current_path).to eq("/merchants/#{@bike_shop.id}/edit")
+      expect(page).to have_content("State can't be blank")
+    end
   end
 end
