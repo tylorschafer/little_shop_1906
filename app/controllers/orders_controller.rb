@@ -1,12 +1,13 @@
 class OrdersController < ApplicationController
   before_action :verify_order, only: [:index]
 
+  def index
+  end
+
   def verify_order
     if cart.contents == {}
       redirect_to '/items'
       flash[:error] = 'Sorry, you have no items in your cart to process an order'
-    else
-      render 'index'
     end
   end
 

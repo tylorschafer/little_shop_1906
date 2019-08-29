@@ -14,9 +14,9 @@ class CartController < ApplicationController
   end
 
   def update(item = Item.find(params[:item_id]),  add = params[:add])
-    if (cart.count_of(item.id) == item.inventory) && (add == 'true')
+    if cart.max_item_count?(item, add)
       flash[:error] = "Sorry this is the maximum order size allowed for this item."
-    elsif (cart.count_of(item.id) <= 1) && (add == 'false')
+    elsif cart.min_item_count?(item, add)
       delete(false)
     else
       add_or_subtract(add, item.id)
@@ -40,7 +40,7 @@ class CartController < ApplicationController
 
   def find_redirect
     session[:cart] = cart.contents
-    if params[:path] == '/cart' && cart.contents != {}
+    if params[:path] == '/cart'
       redirect_to '/cart'
     else
       redirect_to '/items'

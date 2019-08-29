@@ -27,6 +27,14 @@ class Cart
     end
   end
 
+  def max_item_count?(item, add)
+    return true if count_of(item.id) == item.inventory && add == 'true'
+  end
+
+  def min_item_count?(item, add)
+    return true if count_of(item.id) <= 1 && add == 'false'
+  end
+
   def sub_total(item)
     item.price * count_of(item.id)
   end

@@ -143,7 +143,8 @@ describe 'Cart Show Page' do
       click_button '-'
       end
 
-      expect(current_path).to eq('/items')
+      expect(current_path).to eq('/cart')
+      expect(page).to_not have_link(@item_1.name)
   end
 
   it "The cart will not display items that have been deleted" do
