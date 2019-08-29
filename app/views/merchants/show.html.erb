@@ -5,21 +5,28 @@
 <ul><%= link_to "All #{@merchant.name} Items", "/merchants/#{@merchant.id}/items" %></ul>
 <ul><%= link_to "Update Merchant", "/merchants/#{@merchant.id}/edit" %></ul>
 <% if @merchant.has_order == false %>
-  <ul><%= link_to "Delete Merchant", "/merchants/#{@merchant.id}", method: :delete %>
+  <ul><%= link_to "Delete Merchant", "/merchants/#{@merchant.id}", method: :delete %></ul>
 <% end %>
-</ul>
-
-  <section id="merchant-stats">
-    <ul>
-      <li><h2> <%= @merchant.name %> Seller Stats:</h2></li>
-      <li>Total Items: <%= @merchant.items_count %></li>
-      <% if @merchant.has_order %>
-        <li>Average Item Price: $<%= @merchant.average_item_price.round(1) %></li>
-        <ul><p>Orders shipped to:</p>
-          <% @merchant.distinct_cities.each do |city| %>
-          <li><%= city %></li>
-        </ul>
-      <% end %>
-    </ul>
-  </section>
+<section class="merchant-stats">
+<center>
+  <h2> <%= @merchant.name %> Statistics:</h2>
+  <table class ="merchant-stats-table">
+    <th>Total Items:</th>
+    <td><%= @merchant.items_count %></td>
+  </table
+</center>
+</section>
+<% if @merchant.has_order %>
+  <center>
+    <table class="merchant-stats-table">
+      <th>Average Item Price:</th>
+      <td>$<%= @merchant.average_item_price.round(1) %></td>
+    </table>
+    <table class="merchant-stats-table">
+    <th>Orders shipped to:</th>
+    <% @merchant.distinct_cities.each do |city| %>
+      <td><%= city %></td>
+    <% end %>
+  </table>
+  </center>
 <% end %>

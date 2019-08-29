@@ -301,3 +301,31 @@ input[type=text], select {
   border-color: #002244;
   text-align: center
 }
+
+.merchant-stats {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+.merchant-stats-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #45a049;
+  border: 1px solid black;
+  border-style: ridge;
+  color: white;
+}
+
+.merchant-stats-table td {
+  border: 1px solid #45a049;
+  color: #002244;
+  padding: 8px;
+  border-style: dotted;
+  font-family: sans-serif;
+}
+}
+
+.merchant-stats-table {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  width: 100%;
+}
