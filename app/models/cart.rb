@@ -5,6 +5,10 @@ class Cart
     @contents = initial_contents || Hash.new(0)
   end
 
+  def invalid_item?(item_id)
+    Item.where(id: item_id).empty?
+  end
+
   def total_count
     @contents.values.sum
   end
@@ -47,5 +51,4 @@ class Cart
     @contents.delete(id)
     @contents
   end
-
 end

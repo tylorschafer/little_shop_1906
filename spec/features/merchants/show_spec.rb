@@ -46,7 +46,7 @@ describe 'Merchant Show Page' do
     within "#merchant-stats" do
       expect(page).to have_content("Total Items: 2")
       expect(page).to have_content("Average Item Price: $45.0")
-      expect(page).to have_content("Orders shipped to:\nDenver Fakeville")
+      expect(page).to have_content("Orders shipped to: Denver Fakeville")
     end
   end
 end

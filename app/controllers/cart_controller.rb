@@ -6,9 +6,7 @@ class CartController < ApplicationController
       flash[:notice] = "You have no items in your cart."
     else
       cart.contents.each do |item_id, quantity|
-        if Item.where(id: item_id).empty?
-          session[:cart].delete(item_id)
-        end
+        session[:cart].delete(item_id) if cart.invalid_item?(item_id)
       end
     end
   end
@@ -26,11 +24,8 @@ class CartController < ApplicationController
   end
 
   def add_or_subtract(add, item_id)
-    if add == 'false'
-      cart.subtract_item(item_id)
-    else
-      cart.add_item(item_id)
-    end
+    cart.subtract_item(item_id) if add == 'false'
+    cart.add_item(item_id) if add == 'true'
   end
 
   def update_message(item)

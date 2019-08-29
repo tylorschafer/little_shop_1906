@@ -15,5 +15,4 @@ class Review < ApplicationRecord
   def self.average_rating(item_id)
     all.where("item_id = #{item_id}").average(:rating)
   end
-
 end

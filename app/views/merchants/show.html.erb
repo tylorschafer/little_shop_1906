@@ -7,7 +7,7 @@
 <% if @merchant.has_order == false %>
   <ul><%= link_to "Delete Merchant", "/merchants/#{@merchant.id}", method: :delete %></ul>
 <% end %>
-<section class="merchant-stats">
+<section id="merchant-stats">
 <center>
   <h2> <%= @merchant.name %> Statistics:</h2>
   <table class ="merchant-stats-table">
@@ -15,7 +15,6 @@
     <td><%= @merchant.items_count %></td>
   </table
 </center>
-</section>
 <% if @merchant.has_order %>
   <center>
     <table class="merchant-stats-table">
@@ -29,4 +28,5 @@
     <% end %>
   </table>
   </center>
+</section>
 <% end %>

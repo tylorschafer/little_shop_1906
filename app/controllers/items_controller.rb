@@ -52,6 +52,10 @@ class ItemsController<ApplicationController
 
   def destroy
     item = Item.destroy(params[:id])
+    if cart.count_of(item.id) > 0
+      cart.subtract_item(item.id)
+      session[:cart].delete(item.id)
+    end
     redirect_to '/items'
   end
 
@@ -60,5 +64,4 @@ class ItemsController<ApplicationController
   def item_params
     params.permit(:name,:description,:price,:inventory,:image)
   end
-
 end

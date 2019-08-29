@@ -4,13 +4,20 @@ describe Cart do
   describe "Instance methods" do
     before :each do
       @merchant = Merchant.create(name: "Meg's Bike Shop", address: '123 Bike Rd.', city: 'Denver', state: 'CO', zip: 80203)
-      @item_1 = @merchant.items.create(name: "Gatorskins", description: "They'll never pop!", price: 100, image: "https://www.rei.com/media/4e1f5b05-27ef-4267-bb9a-14e35935f218?size=784x588", inventory: 12)
-      @item_2 = @merchant.items.create(name: "Raptorskins", description: "This is different", price: 80, image: "https://www.rei.com/media/4e1f5b05-27ef-4267-bb9a-14e35935f218?size=784x588", inventory: 8)
+      @item_1 = @merchant.items.create(name: "Gatorskins", description: "They'll never pop!", price: 100, image: "https://www.rei.com/media/4e1f5b05-27ef-4267-bb9a-14e35935f218?size=784x588", inventory: 20)
+      @item_2 = @merchant.items.create(name: "Raptorskins", description: "This is different", price: 80, image: "https://www.rei.com/media/4e1f5b05-27ef-4267-bb9a-14e35935f218?size=784x588", inventory: 19)
       @cart = Cart.new({
           "#{@item_1.id}" => 19,
           "#{@item_2.id}" => 18
-        })
+         })
     end
+
+    it "#invanlid_item? will return true if that item is no longer in database" do
+      expect(@cart.invalid_item?(@item_1.id)).to eq(false)
+      @item_1.destroy
+      expect(@cart.invalid_item?(@item_1.id)).to eq(true)
+    end
+
     it "#total_count can calculate total number of items in the cart" do
       expect(@cart.total_count).to eq(37)
     end
@@ -55,6 +62,26 @@ describe Cart do
 
       expect(@cart.cart_items[0]).to eq(@item_1)
       expect(@cart.cart_items[1]).to eq(@item_2)
+    end
+
+    it "#max_item_count? will return true if all an items inventory is already in cart" do
+      expect(@cart.max_item_count?(@item_1, 'true')).to eq(nil)
+
+      @cart.add_item(@item_1.id)
+
+      expect(@cart.max_item_count?(@item_1, 'true')).to eq(true)
+    end
+
+    it "#min_item_count? will return true if all an item quanitity is being removed when there is only one quantity." do
+      cart = Cart.new({
+          "#{@item_1.id}" => 2,
+         })
+
+      expect(cart.min_item_count?(@item_1, 'false')).to eq(nil)
+
+      cart.subtract_item(@item_1.id)
+
+      expect(cart.min_item_count?(@item_1, 'false')).to eq(true)
     end
 
     it "#subtotal returns the total price of that item and it's quantity" do
